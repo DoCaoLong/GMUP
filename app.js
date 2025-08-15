@@ -193,7 +193,7 @@
         return;
     }
 
-    let remaining = 3;
+    let remaining = 10;
     countEl.textContent = remaining;
 
     const timer = setInterval(() => {

@@ -40,10 +40,10 @@
         </svg>
       </div>
     </h3>
-    <p id="helloText" style="display:none; color:#fff; font-size:40px; text-align:center; margin-top:20px;">
-      <span style="font-weight: bold;">THE JOURNEY BEGINS</span>
+    <p id="helloText" class="helloText">
+      <span class="helloText_bold">THE JOURNEY BEGINS</span>
       </br>
-      <span style="font-size: 35px;margin-top: 14px;display: inline-block;">Glow with us from day one</span>
+      <span class="glowText">Glow with us from day one</span>
     </p>
   </div>
 
@@ -56,10 +56,7 @@
   </audio>
 
 
-  <div id="fwOverlay" style="
-  position:fixed; inset:0; z-index:9999; display:none;
-  align-items:center; justify-content:center; pointer-events:none;
-  background: transparent;">
+  <div id="fwOverlay" class="fwOverlay">
     <dotlottie-wc id="fwAnim"
       src="https://lottie.host/63f454ec-0886-4f3a-b4e1-c92c166e0641/moRXCmAXyq.lottie"
       style="width:100vmin; height:100vmin;scale:1.7"
@@ -69,12 +66,10 @@
     </dotlottie-wc>
   </div>
 
-  <div id="loader" style="
-    position:fixed; inset:0; z-index:100000; display:flex; align-items:center; justify-content:center;
-    background:rgba(0,0,0,0.9); color:#fff; font-family: Poppins, Montserrat, sans-serif;">
-    <div class="loader-inner" style="text-align:center">
+  <div id="loader" class="loader">
+    <div class="loader-inner" >
       <!-- <div style="font-size:16px; opacity:.8; letter-spacing:.2em; margin-bottom:8px;">LOADING</div> -->
-      <div id="count" style="font-size:100px; font-weight:800; line-height:1">10</div>
+      <div id="count">10</div>
       <!-- <div style="font-size:14px; opacity:.7; margin-top:8px;">seconds</div> -->
     </div>
   </div>
