@@ -261,14 +261,14 @@ body {
 
 @media (min-width: 1600px) {
     .glow_wrap {
-        transform: translate(-50%, -80%);
+        transform: translate(-50%, -70%);
         gap: 14px;
     }
 }
 
 @media (min-width: 1920px) {
     .glow_wrap {
-        transform: translate(-50%, -80%);
+        transform: translate(-50%, -70%);
         gap: 50px;
     }
     .glow_logo {
