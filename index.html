@@ -1,81 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Glowme Up">
-  <meta name="keywords" content="Glowme, beauty, makeup, skincare, cosmetics">
-  <meta name="author" content="Glowme Up">
-  <meta property="og:title" content="Glowme Up">
-  <meta property="og:description" content="Khám phá Glowme Up - nâng tầm phong cách và vẻ đẹp của bạn">
-  <meta property="og:image" content="./imgs/glowme_logo.png">
-  <meta property="og:url" content="">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="apple-touch-icon" sizes="180x180" href="./imgs/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./imgs/favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./imgs/favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="./imgs/favicon_io/site.webmanifest">
-  <link rel="stylesheet" href="./style.css">
-  <title>Glow Me Up</title>
-</head>
-<body>
-  <div id="glowme_page" class="glowme_page">
-  <div class="glow_wrap">
-    <div class="glow_logo">
-      <img src="./imgs/glowme_logo.png" alt="">
-    </div>
-    <h1 class="glowme_title" id="animated-text">LET'S GLOW TOGETHER</h1>
-    <h3 id="circle-animation" class="glow_fire_btn">
-      <div id="arrow-container">
-        <textPath class="start_txt" xlink:href="#textcircle">START</textPath>
-      </div>
-      <div class="circle-container scroll-circle">
-        <svg viewBox="0 0 500 500">
-          <defs>
-            <path d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250" id="textcircle"></path>
-          </defs>
-          <text dy="30">
-            <textPath xlink:href="#textcircle">&nbsp; GLOW ME UP &nbsp; GLOW ME UP &nbsp; GLOW ME UP &nbsp; GLOW ME UP</textPath>
-          </text>
-        </svg>
-      </div>
-    </h3>
-    <p id="helloText" class="helloText">
-      <span class="helloText_bold">THE JOURNEY BEGINS</span>
-      </br>
-      <span class="glowText">Glow with us from day one</span>
-    </p>
-  </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Glowme Up" />
+        <meta
+            name="keywords"
+            content="Glowme, beauty, makeup, skincare, cosmetics"
+        />
+        <meta name="author" content="Glowme Up" />
+        <meta property="og:title" content="Glowme Up" />
+        <meta
+            property="og:description"
+            content="Khám phá Glowme Up - nâng tầm phong cách và vẻ đẹp của bạn"
+        />
+        <meta property="og:image" content="./imgs/glowme_logo.png" />
+        <meta property="og:url" content="" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./imgs/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./imgs/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./imgs/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./imgs/favicon_io/site.webmanifest" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+        />
+        <link rel="stylesheet" href="./css/main.css?v=1.0" />
+        <link rel="stylesheet" href="./css/home.css?v=1.0" />
+        <title>Glow Me Up</title>
+    </head>
 
-  <div class="glowme_text_bottom">
-    Beauty - Technology - AI
-  </div>
+    <body>
+        <div id="glowmePage" class="glowmePage">
+            <header class="header">
+                <a href="#hero" class="header_logo">
+                    <img src="./imgs/home/logo.svg" alt="Glow Me Up" />
+                </a>
+                <nav class="header_nav" id="mobileMenu">
+                    <ul>
+                        <li><a href="#event">Sự kiện</a></li>
+                        <li><a href="#update">Cập nhật</a></li>
+                        <li><a href="#register">Nhận thông báo</a></li>
+                    </ul>
+                    <button class="close_menu" id="close_menu">
+                        <img src="./imgs/cancel.png" alt="" />
+                    </button>
+                </nav>
+                <button class="menu_toggle" id="menuToggle">
+                    <img src="./imgs/hambuger.svg" alt="" />
+                </button>
+            </header>
 
-  <audio id="fireworksSound" preload="auto">
-    <source src="./audio/jim.mp3" type="audio/mpeg" />
-  </audio>
+            <section id="hero" class="hero">
+                <div class="hero_container">
+                    <div class="hero_text glassmorphism">
+                        <div class="hero_text_icon">
+                            <img src="./imgs/home/AI.svg" alt="" />
+                        </div>
+                        <p>GlowMeUp — Beauty × Technology × AI</p>
+                    </div>
+                    <div class="hero_logo">
+                        <img src="./imgs/glowme_logo.png" alt="" />
+                    </div>
+                    <h1 class="hero_title">Launching event</h1>
+                    <p class="hero_desc">
+                        Đếm ngược đến ngày ứng dụng chính thức ra mắt vào ngày
+                        25.11.2025
+                    </p>
+                    <div class="hero_countdowns">
+                        <div class="countdown_item">
+                            <span class="countdown_number" id="days">00</span>
+                            <span class="countdown_label">Ngày</span>
+                        </div>
+                        <div class="countdown_item">
+                            <span class="countdown_number" id="hours">00</span>
+                            <span class="countdown_label">Giờ</span>
+                        </div>
+                        <div class="countdown_item">
+                            <span class="countdown_number" id="minutes"
+                                >00</span
+                            >
+                            <span class="countdown_label">Phút</span>
+                        </div>
+                        <div class="countdown_item">
+                            <span class="countdown_number" id="seconds"
+                                >00</span
+                            >
+                            <span class="countdown_label">Giây</span>
+                        </div>
+                    </div>
+                    <div class="hero_buttons">
+                        <a href="#" class="hero_button">Xem cập nhật</a>
+                        <a href="#" class="hero_button glassmorphism"
+                            >Sự kiện và hình ảnh</a
+                        >
+                    </div>
+                    <div class="hero_mouse">
+                        <img src="./imgs/mouse.svg" alt="" />
+                    </div>
+                </div>
+            </section>
 
+            <section class="glowme">
+                <div class="glowme_circle_1"></div>
+                <div class="container">
+                    <div class="glowme_top section">
+                        <div class="glowme_decor">
+                            <img src="./imgs/home/champhaylight.svg" alt="" />
+                        </div>
+                        <div class="glowme_title">
+                            <h2>GlowMeUp</h2>
+                            <p>Tỏa sáng theo cách của bạn!</p>
+                        </div>
+                        <div class="glowme_decor_star">
+                            <img src="./imgs/home/star-yellow.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="glowme_content section">
+                        <p>
+                            Hành trình “Glow Me Up” từ một ngày mệt mỏi đến
+                            chính mình rực rỡ hơn
+                        </p>
+                        <p>
+                            Có những ngày, bạn thức dậy với tâm trạng chẳng đâu
+                            vào đâu. Công việc mệt mỏi, cuộc sống rối ren, gương
+                            mặt trong gương như đang nói "Mình ổn..." – nhưng
+                            thực ra, bạn biết mình cần một điều gì đó khác hơn.
+                            Một cú refresh – cả về tâm trạng lẫn diện mạo.
+                        </p>
+                        <p>GlowMeUp ra đời từ chính những ngày như vậy</p>
+                        <p>
+                            Ứng dụng không chỉ là một công cụ đặt lịch làm đẹp.
+                            Đó là người bạn đồng hành giúp bạn chọn dịch vụ theo
+                            đúng mood – thư giãn, quyền lực, dịu dàng hay nổi
+                            loạn. Chỉ với vài chạm, GlowMeUp gợi ý combo phù
+                            hợp, spa chất lượng gần bạn, ưu đãi sẵn sàng chờ bạn
+                            nhấn “Đặt"
+                        </p>
+                        <p>
+                            Không chỉ là làm đẹp, mà là một hành trình “glow up”
+                            tinh thần.
+                        </p>
+                        <p>
+                            Bạn check-in cùng hội bạn thân, cùng nhau nhận quà,
+                            vượt thử thách gamified và thấy mình đẹp lên từng
+                            chút mỗi ngày — không chỉ bên ngoài, mà còn cả sự tự
+                            tin bên trong. GlowMeUp tin rằng: Mỗi người đều xứng
+                            đáng được “glow” theo cách riêng. Không phải để trở
+                            thành ai đó khác, mà để trở thành phiên bản rực rỡ
+                            hơn của chính mình!
+                        </p>
+                    </div>
+                    <p class="glowme_text section">
+                        Hãy để Glowmeup đồng hành vì bạn xứng đáng!
+                    </p>
+                </div>
+                <div class="glowme_circle_2"></div>
+            </section>
 
-  <div id="fwOverlay" class="fwOverlay">
-    <dotlottie-wc id="fwAnim"
-      src="https://lottie.host/63f454ec-0886-4f3a-b4e1-c92c166e0641/moRXCmAXyq.lottie"
-      style="width:100vmin; height:100vmin;scale:1.7"
-      speed="1"
-      loop="false"
-      autoplay="false">
-    </dotlottie-wc>
-  </div>
+            <section id="update" class="update section">
+                <div class="container">
+                    <div class="title_master">
+                        <div class="title_img">
+                            <img src="./imgs/home/calendar_yellow.svg" alt="" />
+                        </div>
+                        <div class="title_content">
+                            <h2>Cập nhật dự án</h2>
+                            <p>
+                                Bài viết & hình ảnh về các hoạt động của
+                                GlowMeUp
+                            </p>
+                        </div>
+                        <div class="title_arr">
+                            <img src="./imgs/home/arrow_black.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="update_list">
+                        <div class="update_item">
+                            <div class="update_img">
+                                <img
+                                    src="./imgs/home/update_project.png"
+                                    alt="update1"
+                                />
+                            </div>
+                            <div class="update_content">
+                                <div class="update_top">
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/clock_black.svg"
+                                            alt="clock"
+                                        />
+                                        <span>5.8.2025</span>
+                                    </div>
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/map-pin-black.svg"
+                                            alt="map-pin"
+                                        />
+                                        <span>HCM</span>
+                                    </div>
+                                </div>
+                                <h3 class="update_title text-truncate-1">
+                                    Kickoff Dinner — Let's Glow Together
+                                </h3>
+                                <p class="update_desc text-truncate-3">
+                                    Đêm kickoff 15/08/2025 cùng GlowTeam – khởi
+                                    đầu cho hành trình tạo nên hệ sinh thái
+                                    beauty-tech cá nhân hoá.
+                                </p>
+                                <div class="update_category">
+                                    <div class="update_category_item">
+                                        Kickoff
+                                    </div>
+                                    <div class="update_category_item">
+                                        Glow team
+                                    </div>
+                                    <div class="update_category_item">
+                                        Event
+                                    </div>
+                                </div>
+                                <div class="update_gallery">
+                                    <div class="update_gallery_item">
+                                        <img
+                                            src="./imgs/home/image-black.svg"
+                                            alt=""
+                                        />
+                                        <p>Bộ sưu tập hình</p>
+                                    </div>
+                                    <img
+                                        src="./imgs/home/arrow_black_mini.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <div id="loader" class="loader">
-    <div class="loader-inner" >
-      <!-- <div style="font-size:16px; opacity:.8; letter-spacing:.2em; margin-bottom:8px;">LOADING</div> -->
-      <div id="count">10</div>
-      <!-- <div style="font-size:14px; opacity:.7; margin-top:8px;">seconds</div> -->
-    </div>
-  </div>
-</div>
-<script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="./app.js"></script>
-</body>
+            <section id="event" class="event section">
+                <div class="container">
+                    <div class="title_master">
+                        <div class="title_img">
+                            <img src="./imgs/home/file-yellow.svg" alt="" />
+                        </div>
+                        <div class="title_content">
+                            <h2>Sự kiện nổi bật</h2>
+                            <p>
+                                Nhật ký phát triển tiến tới Launching 25/11/2025
+                            </p>
+                        </div>
+                        <div class="title_arr">
+                            <img src="./imgs/home/arrow_black.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="event_list">
+                        <div class="update_item">
+                            <div class="update_img">
+                                <img
+                                    src="./imgs/home/blog1.png"
+                                    alt="update1"
+                                />
+                            </div>
+                            <div class="update_content">
+                                <div class="update_top">
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/clock_black.svg"
+                                            alt="clock"
+                                        />
+                                        <span>16.8.2025</span>
+                                    </div>
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/map-pin-black.svg"
+                                            alt="map-pin"
+                                        />
+                                        <span>HCM</span>
+                                    </div>
+                                </div>
+                                <h3 class="update_title text-truncate-1">
+                                    GlowMeUp chính thức bắt đầu!
+                                </h3>
+                                <p class="update_desc text-truncate-3">
+                                    Sau đêm Kickoff, đội ngũ tăng tốc hoàn thiện
+                                    sản phẩm, chuẩn bị cho Launching 15/11.
+                                </p>
+                                <div class="update_category_item mouse_hover">Đọc thêm</div>
+                            </div>
+                        </div>
+                        <div class="update_item">
+                            <div class="update_img">
+                                <img
+                                    src="./imgs/home/blog2.png"
+                                    alt="update1"
+                                />
+                            </div>
+                            <div class="update_content">
+                                <div class="update_top">
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/clock_black.svg"
+                                            alt="clock"
+                                        />
+                                        <span>5.9.2025</span>
+                                    </div>
+                                    <div class="update_top_icon">
+                                        <img
+                                            src="./imgs/home/map-pin-black.svg"
+                                            alt="map-pin"
+                                        />
+                                        <span>HCM</span>
+                                    </div>
+                                </div>
+                                <h3 class="update_title text-truncate-1">
+                                    Teaser tính năng: Đặt lịch theo mood
+                                </h3>
+                                <p class="update_desc text-truncate-3">
+                                    Chọn dịch vụ theo tâm trạng: thư giãn, quyền
+                                    lực, dịu dàng hay bùng nổ – chỉ với một cú
+                                    chạm.
+                                </p>
+                                <div class="update_category_item mouse_hover">Đọc thêm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery section">
+                <div class="container">
+                    <h2 class="gallery_title">
+                        NHỮNG HÌNH ẢNH NỔI BẬT
+                        <p>GLOW ME UP 2025</p>
+                    </h2>
+                    <div id="gallery_slider" class="slider">
+                        <div class="swiper-container">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide swiper-slide--one">
+                                        <div class="slide-content">
+                                            <img
+                                                src="./imgs/home/slider3.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide--one">
+                                        <div class="slide-content">
+                                            <img
+                                                src="./imgs/home/slider2.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide--one">
+                                        <div class="slide-content">
+                                            <img
+                                                src="./imgs/home/slider3.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide--one">
+                                        <div class="slide-content">
+                                            <img
+                                                src="./imgs/home/slider4.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide swiper-slide--one">
+                                        <div class="slide-content">
+                                            <img
+                                                src="./imgs/home/slider5.png"
+                                                alt=""
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-button-prev mouse_hover">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next mouse_hover">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                                    />
+                                </svg>
+                            </div>
+
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="register" class="register section">
+                <div class="container">
+                    <div class="title_master">
+                        <div class="title_img">
+                            <img src="./imgs/home/mail-yellow.svg" alt="" />
+                        </div>
+                        <div class="title_content">
+                            <h2>Đăng ký nhận thông báo</h2>
+                            <p>
+                                Nhận email khi GlowMeUp mở tải app & có ưu đãi
+                                sớm cho người đăng ký.
+                            </p>
+                        </div>
+                        <div class="title_arr">
+                            <img src="./imgs/home/arrow_black.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="register_input">
+                        <input type="text" placeholder="you@example.com" />
+                        <button>Đăng ký</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer_wrap">
+                        <div class="footer_left">
+                            <div class="footer_left_logo">
+                                <img src="./imgs/logo_footer.png" alt="" />
+                            </div>
+                            <p class="footer_desc">
+                                Người bạn đồng hành giúp bạn chọn dịch vụ làm
+                                đẹp theo đúng mood
+                            </p>
+                            <div class="footer_website">
+                                <img src="./imgs/home/earth-ping.svg" alt="" />
+                                <a href="https://glowmeup.vn/">glowmeup.vn</a>
+                            </div>
+                        </div>
+                        <div class="footer_right">
+                            <div class="footer_social">
+                                <a href="#"
+                                    ><img
+                                        src="./imgs/home/tiktok-ping.svg"
+                                        alt="instagram"
+                                /></a>
+                                <a href="#"
+                                    ><img
+                                        src="./imgs/home/instagram-ping.svg"
+                                        alt="facebook"
+                                /></a>
+                                <a href="#"
+                                    ><img
+                                        src="./imgs/home/facebook-ping.svg"
+                                        alt="linkedin"
+                                /></a>
+                                <a href="#"
+                                    ><img
+                                        src="./imgs/home/youtube-ping.svg"
+                                        alt="youtube"
+                                /></a>
+                            </div>
+                            <div class="footer_right_text">
+                                <p>© 2025 GlowMeUp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div class="cursor"></div>
+            <button href="/" class="back-to-home" title="Back to Home"> <img src="./imgs/home/arrow_up_black.svg" alt=""> </button>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+        <script src="./js/home.js?v=1.0"></script>
+    </body>
 </html>
