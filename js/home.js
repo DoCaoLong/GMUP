@@ -50,9 +50,9 @@ window.addEventListener("scroll", () => {
     header.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
 });
 
-// Ngày kết thúc: 15/11/2025 00:00:00 GMT+7
+// Ngày kết thúc: 25/11/2025 00:00:00 GMT+7
 const countDownDate = new Date(
-    new Date("2025-11-25T00:00:00").toLocaleString("en-US", {
+    new Date("2025-12-11T00:00:00").toLocaleString("en-US", {
         timeZone: "Asia/Ho_Chi_Minh",
     })
 ).getTime();
@@ -96,14 +96,13 @@ const timer = setInterval(() => {
 }, 1000);
 
 // Mobile menu toggle functionality using GSAP
-
 const toggleButton = document.getElementById("menuToggle");
 const navMenu = document.getElementById("mobileMenu");
 const closeButton = document.getElementById("close_menu");
 document.querySelectorAll('.header_nav a[href^="#"]').forEach((link) => {
     link.addEventListener("click", () => {
         if (window.innerWidth < 1024) {
-            navMenu.style.display = "none"; 
+            navMenu.style.display = "none";
         }
     });
 });
@@ -180,12 +179,12 @@ if (!toggleButton || !navMenu || !closeButton) {
     mq.addEventListener?.("change", setupByViewport);
 }
 
-const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-).matches;
+// const reduceMotion = window.matchMedia(
+//     "(prefers-reduced-motion: reduce)"
+// ).matches;
 
 function runIntro() {
-    if (reduceMotion) return;
+    // if (reduceMotion) return;
 
     // Trạng thái ban đầu
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
@@ -242,7 +241,7 @@ window.addEventListener("pageshow", (e) => {
 });
 
 function popOnce(el) {
-    if (reduceMotion) return;
+    // if (reduceMotion) return;
     gsap.fromTo(
         el,
         { scale: 0.95 },
