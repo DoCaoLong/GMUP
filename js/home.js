@@ -50,9 +50,9 @@ window.addEventListener("scroll", () => {
     header.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
 });
 
-// Ngày kết thúc: 25/11/2025 00:00:00 GMT+7
+// Ngày kết thúc: 18/11/2025 00:00:00 GMT+7
 const countDownDate = new Date(
-    new Date("2025-12-11T00:00:00").toLocaleString("en-US", {
+    new Date("2025-12-18T00:00:00").toLocaleString("en-US", {
         timeZone: "Asia/Ho_Chi_Minh",
     })
 ).getTime();
@@ -69,8 +69,11 @@ const timer = setInterval(() => {
 
     if (distance <= 0) {
         clearInterval(timer);
-        document.querySelector(".hero_countdowns").innerHTML =
-            "<h2>Đã đến ngày!</h2>";
+        document.querySelector(".hero_desc").innerHTML =
+            "Ứng dụng đã được phát hành! Vui lòng tải xuống từ cửa hàng ứng dụng.";
+        document.querySelectorAll(".countdown_item").forEach((el) => {
+            el.innerHTML =""
+        });
         return;
     }
 
