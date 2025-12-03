@@ -74,8 +74,9 @@ body.modal-open {
         margin: 0 auto;
         padding: 0 32px;
     }
-    .modal{
-        height: 54svh !important;
+    .modal {
+        height: 77svh !important;
+        width: 75vw !important;
     }
 }
 
@@ -371,6 +372,7 @@ body.modal-open {
     .header_nav ul {
         gap: 24px;
     }
+  
 }
 
 @media screen and (max-width: 1023px) {
