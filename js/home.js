@@ -1,4 +1,25 @@
 gsap.registerPlugin(ScrollTrigger);
+
+// Khởi tạo Lenis
+const lenis = new Lenis({
+    duration: 0.9,        
+    smoothWheel: true,
+    smoothTouch: false,
+    wheelMultiplier: 1.0, 
+});
+
+// Chỉ update ScrollTrigger khi Lenis scroll, không phải mỗi frame
+lenis.on("scroll", () => {
+    ScrollTrigger.update();
+});
+
+// Loop mượt bằng GSAP ticker (nhẹ hơn tự tạo rAF riêng)
+gsap.ticker.add((time) => {
+    // GSAP time là giây, Lenis dùng ms
+    lenis.raf(time * 1000);
+});
+
+
 var swiper = new Swiper(".swiper", {
     effect: "coverflow",
     grabCursor: true,
@@ -72,7 +93,7 @@ const timer = setInterval(() => {
         document.querySelector(".hero_desc").innerHTML =
             "Ứng dụng đã được phát hành! Vui lòng tải xuống từ cửa hàng ứng dụng.";
         document.querySelectorAll(".countdown_item").forEach((el) => {
-            el.innerHTML =""
+            el.innerHTML = "";
         });
         return;
     }
@@ -186,32 +207,32 @@ if (!toggleButton || !navMenu || !closeButton) {
 //     "(prefers-reduced-motion: reduce)"
 // ).matches;
 
-function runIntro() {
-    // if (reduceMotion) return;
-
-    // Trạng thái ban đầu
+function createIntroTimeline() {
+    // Reset trạng thái mỗi lần gọi
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
         opacity: 0,
     });
-    gsap.set([".hero_text", ".hero_logo", ".hero_title", ".hero_desc"], {
+    gsap.set([".hero_text", ".hero_logo", ".hero_title", ".hero_desc", ".hero_location", ".hero_time"], {
         opacity: 0,
         y: 30,
     });
     gsap.set(".hero_countdowns .countdown_item", { opacity: 0, y: 20 });
     gsap.set(".hero_buttons a", { opacity: 0, y: 20 });
-    gsap.set(".hero_mouse", { opacity: 0, y: 10 });
+    // gsap.set(".hero_mouse", { opacity: 0, y: 10 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
     tl.to(".header_logo, .header_nav ul li, .menu_toggle", {
         opacity: 1,
         duration: 0.3,
         stagger: 0.1,
-    });
-
-    tl.to(".hero_text", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.4 }, "-=0.3")
-        .to(".hero_title", { opacity: 1, y: 0, duration: 0.4 }, "-=0.25")
-        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.35")
+    })
+        .to(".hero_text", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_title", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_location", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_time", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(
             ".hero_countdowns .countdown_item",
             {
@@ -225,7 +246,12 @@ function runIntro() {
         .fromTo(
             ".hero_countdowns .countdown_number",
             { scale: 0.9 },
-            { scale: 1, duration: 0.35, stagger: 0.06, ease: "back.out(2)" },
+            {
+                scale: 1,
+                duration: 0.35,
+                stagger: 0.06,
+                ease: "back.out(2)",
+            },
             "<"
         )
         .to(
@@ -233,15 +259,58 @@ function runIntro() {
             { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
         )
-        .to(".hero_mouse", { opacity: 1, y: 0, duration: 0.2 }, "-=0.3");
+        // .to(
+        //     ".hero_mouse",
+        //     { opacity: 1, y: 0, duration: 0.2 },
+        //     "-=0.3"
+        // );
+
+    return tl;
 }
 
-// Chạy khi load
-window.addEventListener("load", runIntro);
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+
+    const master = gsap.timeline({
+        defaults: { ease: "power2.inOut" },
+        onComplete: () => {
+            if (preloader) preloader.style.display = "none";
+        },
+    });
+
+    // 1. Preloader
+    master
+        .to(".line-slice", {
+            scaleX: 1,
+            duration: 0.6,
+        })
+        .to(".line-slice", {
+            opacity: 0,
+            duration: 0.2,
+        })
+        .to(".preloader-overlay", {
+            scaleY: 1,
+            duration: 0.5,
+        })
+        .to(
+            "#preloader",
+            {
+                opacity: 0,
+                duration: 0.4,
+            },
+            "-=0.2" // fade preloader trong lúc overlay hoàn tất → đỡ gãy
+        )
+        // 2. Thêm intro ngay sau preloader (hơi overlap cho mượt)
+        .add(createIntroTimeline(), "-=0.2");
+});
 
 window.addEventListener("pageshow", (e) => {
-    if (e.persisted) runIntro();
+    if (e.persisted) {
+        // Chỉ chạy lại intro
+        createIntroTimeline();
+    }
 });
+
 
 function popOnce(el) {
     // if (reduceMotion) return;
@@ -281,7 +350,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // Thêm / gỡ class khi hover
-const hoverTargets = document.querySelectorAll("a, button, .mouse_hover");
+const hoverTargets = document.querySelectorAll("a, button, .mouse_hover, button" );
 
 hoverTargets.forEach((el) => {
     el.addEventListener("mouseenter", () => cursor.classList.add("active"));
@@ -317,3 +386,4 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         }
     });
 });
+
