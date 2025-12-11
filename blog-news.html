@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Glowme Up" />
+        <meta
+            name="keywords"
+            content="Glowme, beauty, makeup, skincare, cosmetics"
+        />
+        <meta name="author" content="Glowme Up" />
+        <meta property="og:title" content="Glowme Up" />
+        <meta
+            property="og:description"
+            content="Khám phá Glowme Up - nâng tầm phong cách và vẻ đẹp của bạn"
+        />
+        <meta property="og:image" content="./imgs/glowme_logo.png" />
+        <meta property="og:url" content="" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./imgs/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./imgs/favicon_io/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./imgs/favicon_io/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./imgs/favicon_io/site.webmanifest" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+        />
+        <link rel="stylesheet" href="./css/main.css?v=1.3" />
+        <link rel="stylesheet" href="./css/home.css?v=1.3" />
+        <style>
+            body {
+                margin: 0;
+                color: #111827;
+                background: #f9fafb;
+            }
+            .container {
+                max-width: 1180px;
+                margin: 0 auto;
+                padding: 24px 16px 48px;
+            }
+            main .custom_wrap_btn {
+                margin: 0 0 48px 0;
+            }
+            /* Layout 2 cột */
+            .blog-layout {
+                display: flex;
+                gap: 24px;
+            }
+
+            /* SIDEBAR */
+            .blog_sidebar {
+                position: sticky;
+                top: 80px;
+                align-self: flex-start;
+                width: 33.33%;
+            }
+            .sidebar_title {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 12px;
+            }
+            .sidebar_list {
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 14px 12px;
+                box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+            }
+            .sidebar_item {
+                display: block;
+                padding: 10px 8px;
+                border-radius: 10px;
+                text-decoration: none;
+                transition: background 0.15s ease, transform 0.1s ease;
+            }
+            .sidebar_item:hover {
+                background: #f3f4ff;
+                transform: translateY(-1px);
+            }
+            .sidebar_item_title {
+                font-size: 14px;
+                font-weight: 600;
+                color: #111827;
+                margin-bottom: 4px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .sidebar_item_meta {
+                font-size: 12px;
+                color: #6b7280;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            /* MAIN CONTENT */
+            .blog_main {
+                width: 66.66%;
+            }
+            .blog-detail-header {
+                padding-top: 16px;
+                padding-bottom: 8px;
+            }
+            .back_link {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                font-size: 14px;
+                color: #6b7280;
+                text-decoration: none;
+                margin-bottom: 12px;
+            }
+            .back_link:hover {
+                color: #111827;
+            }
+            .blog_date {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 14px;
+                color: #6b7280;
+                margin-bottom: 8px;
+            }
+            .blog_cover {
+                margin: 16px 0 24px;
+                border-radius: 16px;
+                overflow: hidden;
+                background: #e5e7eb;
+            }
+            .blog_cover img {
+                width: 100%;
+                display: block;
+                object-fit: cover;
+            }
+            .blog_content {
+                background: #ffffff;
+                border-radius: 16px;
+                padding: 24px 20px;
+                box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+                line-height: 1.7;
+                font-size: 16px;
+            }
+            .blog_content h1,
+            .blog_content h2,
+            .blog_content h3 {
+                margin-top: 20px;
+                margin-bottom: 12px;
+            }
+            .blog_content p {
+                margin: 8px 0;
+            }
+            .loading,
+            .error {
+                font-size: 16px;
+                color: #374151;
+            }
+            .error {
+                color: #b91c1c;
+            }
+            #preloader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #0e0e0e;
+                z-index: 99999;
+                overflow: hidden;
+            }
+
+            .line-slice {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%) scaleX(0);
+                width: 100vw;
+                height: 1px;
+                background-color: #fec93f;
+                z-index: 99998;
+                transform-origin: left center;
+            }
+
+            .preloader-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #000;
+                transform: scaleY(0);
+                transform-origin: center;
+                z-index: 99997;
+            }
+            .blog_wrap {
+                display: flex;
+                gap: 30px;
+                margin-bottom: 50px;
+            }
+            .blog_main {
+                width: 100%;
+                margin: 0 auto;
+            }
+            .blog_main h1 {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            .header {
+                background-color: rgba(0, 0, 0, 0.8) !important;
+            }
+            /* .aside {
+                width: 20%;
+            } */
+            main img {
+                width: 100% !important;
+                height: auto !important;
+            }
+            .img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            p,
+            ol {
+                margin-bottom: 14px;
+            }
+            h1 {
+                font-size: 32px !important;
+                font-weight: 600;
+            }
+            span {
+                font-size: 14px !important;
+            }
+            main {
+                margin-top: 73px;
+            }
+            .blog_content h1,
+            .blog_content h2,
+            .blog_content h3 {
+                font-size: 24px !important;
+                font-weight: 600;
+                line-height: 1.5;
+            }
+            @media screen and (max-width: 1023.98px) {
+                .blog-layout {
+                    flex-direction: column;
+                }
+                .blog_main {
+                    width: 100%;
+                }
+                .blog_sidebar {
+                    width: 100%;
+                    position: static;
+                }
+                .blog_main h1 {
+                    font-size: 18px !important;
+                    margin: 0;
+                }
+                h2 {
+                    font-size: 16px !important;
+                }
+                main {
+                    margin-top: 54px;
+                }
+                .blog_cover {
+                    margin: 0 0 14px 0;
+                }
+                .blog_content {
+                    padding: 14px;
+                }
+                .blog_content h1,
+                .blog_content h2,
+                .blog_content h3 {
+                    font-size: 16px !important;
+                    line-height: 1.5;
+                }
+                span,
+                p {
+                    font-size: 12px !important;
+                }
+                .container {
+                    padding-top: 0;
+                }
+            }
+        </style>
+        <!-- Google Tag Manager -->
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    "gtm.start": new Date().getTime(),
+                    event: "gtm.js",
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", "GTM-MWKV8R3");
+        </script>
+        <!-- End Google Tag Manager -->
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript
+            ><iframe
+                src="https://www.googletagmanager.com/ns.html?id=GTM-MWKV8R3"
+                height="0"
+                width="0"
+                style="display: none; visibility: hidden"
+            ></iframe
+        ></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+
+        <!-- Loader -->
+        <div id="preloader">
+            <div class="line-slice"></div>
+            <div class="preloader-overlay"></div>
+        </div>
+
+        <header class="header">
+            <a href="/" class="header_logo">
+                <img src="./imgs/home/logo.svg" alt="Glow Me Up" />
+            </a>
+            <nav class="header_nav" id="mobileMenu">
+                <ul>
+                    <li><a href="/index.html#event">Sự kiện</a></li>
+                    <li><a href="/index.html#update">Cập nhật</a></li>
+                    <li>
+                        <a href="/index.html#register">Nhận thông báo</a>
+                    </li>
+                </ul>
+                <button class="close_menu" id="close_menu">
+                    <img src="./imgs/cancel.png" alt="" />
+                </button>
+            </nav>
+            <button class="menu_toggle" id="menuToggle">
+                <img src="./imgs/hambuger.svg" alt="" />
+            </button>
+        </header>
+
+        <main>
+            <section class="blog-detail">
+                <div class="container">
+                    <div class="blog-layout">
+                        <!-- MAIN: Chi tiết bài viết -->
+                        <div class="blog_main">
+                            <header class="blog-detail-header">
+                                <a href="/index.html" class="back_link">
+                                    ← Quay lại
+                                </a>
+
+                                <div class="blog_date">
+                                    <span id="newsDate">Đang tải...</span>
+                                </div>
+
+                                <h1 id="newsTitle" class="blog_title">
+                                    Đang tải tiêu đề...
+                                </h1>
+                            </header>
+
+                            <div class="blog_cover">
+                                <img
+                                    id="newsImage"
+                                    src="https://via.placeholder.com/960x480?text=Loading..."
+                                    alt="GlowMeUp News"
+                                />
+                            </div>
+
+                            <article id="newsContent" class="blog_content">
+                                <p class="loading">
+                                    Đang tải nội dung bài viết...
+                                </p>
+                            </article>
+                        </div>
+
+                        <!-- SIDEBAR: Bài viết khác -->
+                        <aside class="blog_sidebar">
+                            <h2 class="sidebar_title">Bài viết khác</h2>
+                            <div id="sidebarList" class="sidebar_list">
+                                <p class="loading">Đang tải...</p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <div class="register_input custom_wrap_btn">
+                <button id="openModalBtn">Đăng ký</button>
+            </div>
+
+            <div class="overlay" id="overlay" aria-hidden="true">
+                <div
+                    class="modal"
+                    id="popup"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="popupTitle"
+                    tabindex="-1"
+                >
+                    <button
+                        class="modal__close"
+                        id="closeModalBtn"
+                        aria-label="Đóng popup"
+                    >
+                        ✕
+                    </button>
+                    <div class="modal__content">
+                        <iframe
+                            id="gmup_iframe"
+                            data-src="https://myspa.vn/glow-me"
+                            src=""
+                            allowfullscreen
+                            referrerpolicy="no-referrer"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_wrap">
+                    <div class="footer_left">
+                        <div class="footer_left_logo">
+                            <img src="./imgs/logo_footer.png" alt="" />
+                        </div>
+                        <p class="footer_desc">
+                            Người bạn đồng hành giúp bạn chọn dịch vụ làm đẹp
+                            theo đúng mood
+                        </p>
+                        <div class="footer_website">
+                            <img src="./imgs/home/earth-ping.svg" alt="" />
+                            <a href="https://glowmeup.vn/">glowmeup.vn</a>
+                        </div>
+                    </div>
+                    <div class="footer_right">
+                        <div class="footer_social">
+                            <a href="#"
+                                ><img
+                                    src="./imgs/home/tiktok-ping1.svg"
+                                    alt="instagram"
+                            /></a>
+                            <a href="#"
+                                ><img
+                                    src="./imgs/home/instagram-ping1.svg"
+                                    alt="facebook"
+                            /></a>
+                            <a href="#"
+                                ><img
+                                    src="./imgs/home/facebook-ping1.svg"
+                                    alt="linkedin"
+                            /></a>
+                            <a href="#"
+                                ><img
+                                    src="./imgs/home/youtube-ping1.svg"
+                                    alt="youtube"
+                            /></a>
+                        </div>
+                        <div class="footer_right_text">
+                            <p>© 2025 GlowMeUp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="cursor"></div>
+        <button href="/" class="back-to-home" title="Back to Home">
+            <img src="./imgs/home/arrow_up_black.svg" alt="" />
+        </button>
+
+        <script src="./lib/gsap.min.js"></script>
+        <script src="./lib/ScrollToPlugin.min.js"></script>
+        <script src="./lib/ScrollTrigger.min.js"></script>
+        <script src="./lib/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/dist/lenis.min.js"></script>
+        <script src="./js/main.js?v=1.4"></script>
+
+        <script>
+            const API_DETAIL =
+                "https://api.myspa.vn/v1/organizations/demozns/news/";
+            const API_LIST =
+                "https://api.myspa.vn/v1/organizations/demozns/news?filter[status]=true&sort=-created_date";
+
+            function getNewsIdFromUrl() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("id");
+            }
+
+            function formatDate(dateStr) {
+                if (!dateStr) return "";
+                const d = new Date(dateStr.replace(" ", "T"));
+                if (isNaN(d.getTime())) return dateStr;
+                const day = d.getDate();
+                const month = d.getMonth() + 1;
+                const year = d.getFullYear();
+                return `${day}.${month}.${year}`;
+            }
+
+            async function loadNewsDetail() {
+                const id = getNewsIdFromUrl();
+                const titleEl = document.getElementById("newsTitle");
+                const dateEl = document.getElementById("newsDate");
+                const imgEl = document.getElementById("newsImage");
+                const contentEl = document.getElementById("newsContent");
+
+                try {
+                    const res = await fetch(API_DETAIL + id);
+                    if (!res.ok) throw new Error("Network error");
+
+                    const json = await res.json();
+                    const data = json.context;
+
+                    if (!data || data.deleted === 1 || data.status === false) {
+                        titleEl.textContent = "Bài viết không tồn tại";
+                        dateEl.textContent = "";
+                        contentEl.innerHTML =
+                            '<p class="error">Bài viết đã bị xóa hoặc tạm ẩn.</p>';
+                        return;
+                    }
+
+                    titleEl.textContent = data.title || "Chi tiết bài viết";
+                    dateEl.textContent = formatDate(data.created_date);
+
+                    if (data.image_url) {
+                        imgEl.src = data.image_url;
+                        imgEl.alt = data.title || "GlowMeUp News";
+                    }
+
+                    contentEl.innerHTML = data.content || "";
+                } catch (err) {
+                    console.error(err);
+                    titleEl.textContent = "Có lỗi xảy ra";
+                    dateEl.textContent = "";
+                    contentEl.innerHTML =
+                        '<p class="error">Không thể tải nội dung bài viết, vui lòng thử lại sau.</p>';
+                }
+            }
+
+            async function loadSidebarPosts() {
+                const currentId = getNewsIdFromUrl();
+                const sidebar = document.getElementById("sidebarList");
+
+                try {
+                    const res = await fetch(API_LIST);
+                    if (!res.ok) throw new Error("Network error");
+
+                    const json = await res.json();
+                    const list = (json.context && json.context.data) || [];
+                    console.log("list :>> ", list);
+
+                    const filtered = list
+                        .filter((item) => String(item.id) !== String(currentId))
+                        .slice(0, 5); // hiển thị tối đa 5 bài
+
+                    if (!filtered.length) {
+                        sidebar.innerHTML =
+                            '<p class="loading">Chưa có bài viết khác.</p>';
+                        return;
+                    }
+
+                    sidebar.innerHTML = filtered
+                        .map((item) => {
+                            const date = formatDate(item.created_date);
+                            const url = `/blog-news.html?id=${item.id}`;
+                            return `
+                                <a href="${url}" class="sidebar_item">
+                                    <div class="sidebar_item_title">
+                                        ${item.title}
+                                    </div>
+                                    <div class="sidebar_item_meta">
+                                        <span>${date}</span>
+                                    </div>
+                                </a>
+                            `;
+                        })
+                        .join("");
+                } catch (err) {
+                    console.error(err);
+                    sidebar.innerHTML =
+                        '<p class="error">Không thể tải danh sách bài viết khác.</p>';
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                loadNewsDetail();
+                loadSidebarPosts();
+            });
+        </script>
+    </body>
+</html>
