@@ -39,264 +39,9 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
         />
-        <link rel="stylesheet" href="./css/main.css?v=1.3" />
-        <link rel="stylesheet" href="./css/home.css?v=1.3" />
-        <style>
-            body {
-                margin: 0;
-                color: #111827;
-                background: #f9fafb;
-            }
-            .container {
-                max-width: 1180px;
-                margin: 0 auto;
-                padding: 24px 16px 48px;
-            }
-            main .custom_wrap_btn {
-                margin: 0 0 48px 0;
-            }
-            /* Layout 2 cột */
-            .blog-layout {
-                display: flex;
-                gap: 24px;
-            }
+        <link rel="stylesheet" href="./css/main.css?v=1.6" />
+        <link rel="stylesheet" href="./css/blogs.css?v=1.0" />
 
-            /* SIDEBAR */
-            .blog_sidebar {
-                position: sticky;
-                top: 80px;
-                align-self: flex-start;
-                width: 33.33%;
-            }
-            .sidebar_title {
-                font-size: 16px;
-                font-weight: 600;
-                margin-bottom: 12px;
-            }
-            .sidebar_list {
-                background: #ffffff;
-                border-radius: 14px;
-                padding: 14px 12px;
-                box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-            }
-            .sidebar_item {
-                display: block;
-                padding: 10px 8px;
-                border-radius: 10px;
-                text-decoration: none;
-                transition: background 0.15s ease, transform 0.1s ease;
-            }
-            .sidebar_item:hover {
-                background: #f3f4ff;
-                transform: translateY(-1px);
-            }
-            .sidebar_item_title {
-                font-size: 14px;
-                font-weight: 600;
-                color: #111827;
-                margin-bottom: 4px;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .sidebar_item_meta {
-                font-size: 12px;
-                color: #6b7280;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-
-            /* MAIN CONTENT */
-            .blog_main {
-                width: 66.66%;
-            }
-            .blog-detail-header {
-                padding-top: 16px;
-                padding-bottom: 8px;
-            }
-            .back_link {
-                display: inline-flex;
-                align-items: center;
-                gap: 4px;
-                font-size: 14px;
-                color: #6b7280;
-                text-decoration: none;
-                margin-bottom: 12px;
-            }
-            .back_link:hover {
-                color: #111827;
-            }
-            .blog_date {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                font-size: 14px;
-                color: #6b7280;
-                margin-bottom: 8px;
-            }
-            .blog_cover {
-                margin: 16px 0 24px;
-                border-radius: 16px;
-                overflow: hidden;
-                background: #e5e7eb;
-            }
-            .blog_cover img {
-                width: 100%;
-                display: block;
-                object-fit: cover;
-            }
-            .blog_content {
-                background: #ffffff;
-                border-radius: 16px;
-                padding: 24px 20px;
-                box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-                line-height: 1.7;
-                font-size: 16px;
-            }
-            .blog_content h1,
-            .blog_content h2,
-            .blog_content h3 {
-                margin-top: 20px;
-                margin-bottom: 12px;
-            }
-            .blog_content p {
-                margin: 8px 0;
-            }
-            .loading,
-            .error {
-                font-size: 16px;
-                color: #374151;
-            }
-            .error {
-                color: #b91c1c;
-            }
-            #preloader {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #0e0e0e;
-                z-index: 99999;
-                overflow: hidden;
-            }
-
-            .line-slice {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%) scaleX(0);
-                width: 100vw;
-                height: 1px;
-                background-color: #fec93f;
-                z-index: 99998;
-                transform-origin: left center;
-            }
-
-            .preloader-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #000;
-                transform: scaleY(0);
-                transform-origin: center;
-                z-index: 99997;
-            }
-            .blog_wrap {
-                display: flex;
-                gap: 30px;
-                margin-bottom: 50px;
-            }
-            .blog_main {
-                width: 100%;
-                margin: 0 auto;
-            }
-            .blog_main h1 {
-                font-size: 32px;
-                margin-bottom: 20px;
-            }
-            .header {
-                background-color: rgba(0, 0, 0, 0.8) !important;
-            }
-            /* .aside {
-                width: 20%;
-            } */
-            main img {
-                width: 100% !important;
-                height: auto !important;
-            }
-            .img img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-            p,
-            ol {
-                margin-bottom: 14px;
-            }
-            h1 {
-                font-size: 32px !important;
-                font-weight: 600;
-            }
-            span {
-                font-size: 14px !important;
-            }
-            main {
-                margin-top: 73px;
-            }
-            .blog_content h1,
-            .blog_content h2,
-            .blog_content h3 {
-                font-size: 24px !important;
-                font-weight: 600;
-                line-height: 1.5;
-            }
-            @media screen and (max-width: 1023.98px) {
-                .blog-layout {
-                    flex-direction: column;
-                }
-                .blog_main {
-                    width: 100%;
-                }
-                .blog_sidebar {
-                    width: 100%;
-                    position: static;
-                }
-                .blog_main h1 {
-                    font-size: 18px !important;
-                    margin: 0;
-                }
-                h2 {
-                    font-size: 16px !important;
-                }
-                main {
-                    margin-top: 54px;
-                }
-                .blog_cover {
-                    margin: 0 0 14px 0;
-                }
-                .blog_content {
-                    padding: 14px;
-                }
-                .blog_content h1,
-                .blog_content h2,
-                .blog_content h3 {
-                    font-size: 16px !important;
-                    line-height: 1.5;
-                }
-                span,
-                p {
-                    font-size: 12px !important;
-                }
-                .container {
-                    padding-top: 0;
-                }
-            }
-        </style>
         <!-- Google Tag Manager -->
         <script>
             (function (w, d, s, l, i) {
@@ -388,6 +133,12 @@
                                     Đang tải nội dung bài viết...
                                 </p>
                             </article>
+
+                            <div class="register_input custom_wrap_btn">
+                                <button class="openModalBtn" id="openModalBtn">
+                                    Đăng ký
+                                </button>
+                            </div>
                         </div>
 
                         <!-- SIDEBAR: Bài viết khác -->
@@ -400,10 +151,6 @@
                     </div>
                 </div>
             </section>
-
-            <div class="register_input custom_wrap_btn">
-                <button id="openModalBtn">Đăng ký</button>
-            </div>
 
             <div class="overlay" id="overlay" aria-hidden="true">
                 <div
@@ -451,6 +198,39 @@
                         </div>
                     </div>
                     <div class="footer_right">
+                        <div class="footer_QR">
+                            <img src="./imgs/qr.png" alt="" />
+                        </div>
+                        <a
+                            href="https://onelink.to/crswk7"
+                            target="_blank"
+                            class="button button_download"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M12 3v10m0 0l-4-4m4 4l4-4"
+                                    stroke="#000"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M4 17v3h16v-3"
+                                    stroke="#000"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                            <span>Tải App GMUP</span>
+                        </a>
                         <div class="footer_social">
                             <a href="#"
                                 ><img
@@ -491,7 +271,7 @@
         <script src="./lib/ScrollTrigger.min.js"></script>
         <script src="./lib/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/dist/lenis.min.js"></script>
-        <script src="./js/main.js?v=1.4"></script>
+        <script src="./js/main.js?v=1.6"></script>
 
         <script>
             const API_DETAIL =
@@ -564,7 +344,6 @@
 
                     const json = await res.json();
                     const list = (json.context && json.context.data) || [];
-                    console.log("list :>> ", list);
 
                     const filtered = list
                         .filter((item) => String(item.id) !== String(currentId))
@@ -582,11 +361,18 @@
                             const url = `/blog-news.html?id=${item.id}`;
                             return `
                                 <a href="${url}" class="sidebar_item">
-                                    <div class="sidebar_item_title">
-                                        ${item.title}
-                                    </div>
-                                    <div class="sidebar_item_meta">
-                                        <span>${date}</span>
+                                    <div class="sidebar_item_wrap">
+                                        <div class="sidebar_item_img">
+                                            <img src="${item.image_url}" alt="" />    
+                                        </div>
+                                        <div class="sidebar_item_content">
+                                            <div class="sidebar_item_title">
+                                                ${item.title}
+                                            </div>
+                                            <div class="sidebar_item_meta">
+                                                <span>${date}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </a>
                             `;

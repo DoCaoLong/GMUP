@@ -1,12 +1,11 @@
-
 gsap.registerPlugin(ScrollTrigger);
 
 // Khởi tạo Lenis
 const lenis = new Lenis({
-    duration: 0.9,        
+    duration: 0.9,
     smoothWheel: true,
     smoothTouch: false,
-    wheelMultiplier: 1.0, 
+    wheelMultiplier: 1.0,
 });
 
 // Chỉ update ScrollTrigger khi Lenis scroll, không phải mỗi frame
@@ -19,7 +18,6 @@ gsap.ticker.add((time) => {
     // GSAP time là giây, Lenis dùng ms
     lenis.raf(time * 1000);
 });
-
 
 var swiper = new Swiper(".swiper", {
     effect: "coverflow",
@@ -71,7 +69,6 @@ window.addEventListener("scroll", () => {
     const opacity = progress * 0.8;
     header.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
 });
-
 
 // Mobile menu toggle functionality using GSAP
 const toggleButton = document.getElementById("menuToggle");
@@ -166,13 +163,24 @@ function createIntroTimeline() {
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
         opacity: 0,
     });
-    gsap.set([".hero_text", ".hero_logo", ".hero_title", ".hero_desc", ".hero_location", ".hero_time"], {
-        opacity: 0,
-        y: 30,
-    });
+    gsap.set(
+        [
+            ".hero_text",
+            ".hero_logo",
+            ".hero_title",
+            ".hero_desc",
+            ".hero_location",
+            ".hero_time",
+            ".dowload_app_mb",
+            ".dowload_app",
+        ],
+        {
+            opacity: 0,
+            y: 30,
+        }
+    );
     gsap.set(".hero_countdowns .countdown_item", { opacity: 0, y: 20 });
     gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0, y: 20 });
-    // gsap.set(".hero_mouse", { opacity: 0, y: 10 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
@@ -187,6 +195,7 @@ function createIntroTimeline() {
         .to(".hero_location", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(".hero_time", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".dowload_app", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(
             ".hero_countdowns .countdown_item",
             {
@@ -213,17 +222,13 @@ function createIntroTimeline() {
             { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
         )
+        .to(".dowload_app_mb", { opacity: 1, y: 0, duration: 0.08 }, "-=0.1")
+
         .to(
             ".hero_buttons a",
             { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
-        )
-        // .to(
-        //     ".hero_mouse",
-        //     { opacity: 1, y: 0, duration: 0.2 },
-        //     "-=0.3"
-        // );
-
+        );
     return tl;
 }
 
@@ -270,7 +275,6 @@ window.addEventListener("pageshow", (e) => {
     }
 });
 
-
 function popOnce(el) {
     // if (reduceMotion) return;
     gsap.fromTo(
@@ -309,7 +313,9 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // Thêm / gỡ class khi hover
-const hoverTargets = document.querySelectorAll("a, button, .mouse_hover, button" );
+const hoverTargets = document.querySelectorAll(
+    "a, button, .mouse_hover, button"
+);
 
 hoverTargets.forEach((el) => {
     el.addEventListener("mouseenter", () => cursor.classList.add("active"));
@@ -345,8 +351,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         }
     });
 });
-
-
 
 // popup
 const body = document.body;
@@ -397,5 +401,25 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-
 // close popup
+
+const countDownDateMain = new Date(
+    new Date("2025-12-17T23:59:59").toLocaleString("en-US", {
+        timeZone: "Asia/Ho_Chi_Minh",
+    })
+).getTime();
+
+const nowMain = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Ho_Chi_Minh",
+});
+const nowTimeMain = new Date(nowMain).getTime();
+
+const distanceMain = countDownDateMain - nowTimeMain;
+
+if (distanceMain <= 0) {
+    document.querySelectorAll(".openModalBtn").forEach((el) => {
+        el.innerText = "Kết thúc đăng ký";
+        el.style.opacity = "0.5";
+        el.disabled = true;
+    });
+}

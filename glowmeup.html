@@ -40,91 +40,8 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
         />
-        <link rel="stylesheet" href="./css/main.css?v=1.3" />
-        <link rel="stylesheet" href="./css/home.css?v=1.3" />
-        <style>
-            #preloader {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #0e0e0e;
-                z-index: 99999;
-                overflow: hidden;
-            }
-
-            .line-slice {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%) scaleX(0);
-                width: 100vw;
-                height: 1px;
-                background-color: #fec93f;
-                z-index: 99998;
-                transform-origin: left center;
-            }
-
-            .preloader-overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #000;
-                transform: scaleY(0);
-                transform-origin: center;
-                z-index: 99997;
-            }
-            /* popup video */
-            .overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.9);
-                display: none;
-                align-items: center;
-                justify-content: center;
-                z-index: 9999;
-            }
-
-            .overlay.is-open {
-                display: flex;
-            }
-
-            /* Modal không giới hạn width/height để video tự quyết */
-            .modalVideo {
-                position: relative;
-                padding: 0;
-                background: transparent;
-            }
-
-            /* Nút đóng */
-            .close-btn {
-                position: absolute;
-                top: 12px;
-                right: 16px;
-                font-size: 32px;
-                border: none;
-                background: transparent;
-                color: #fff;
-                cursor: pointer;
-                z-index: 10000;
-            }
-
-            /* VIDEO: cao theo 100vh, ngang theo đúng tỉ lệ gốc */
-            #popupVideo {
-                height: 90svh; /* chiều cao full màn hình */
-                width: auto; /* chiều ngang tự co theo video, KHÔNG full màn */
-                max-width: 100vw; /* không vượt quá màn hình */
-                object-fit: contain; /* giữ tỉ lệ video */
-            }
-            @media screen and (max-width: 767.98px) {
-                #popupVideo {
-                    height: 100svh;
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="./css/main.css?v=1.6" />
+        <link rel="stylesheet" href="./css/home.css?v=1.6" />
 
         <!-- Google Tag Manager -->
         <script>
@@ -203,6 +120,11 @@
                     <p class="hero_time">
                         <span>8H - 12H</span> <span>Thứ Năm 18.12.2025</span>
                     </p>
+                    <div class="dowload_app">
+                        <div class="footer_QR">
+                            <img src="./imgs/qr.png" alt="" />
+                        </div>
+                    </div>
                     <div class="hero_countdowns">
                         <div class="countdown_item">
                             <span class="countdown_number" id="days">00</span>
@@ -226,12 +148,47 @@
                         </div>
                     </div>
                     <div class="hero_buttons">
-                        <div id="openVideoBtn" class="hero_button">
+                        <div id="openVideoBtn" class="hero_button mouse_hover">
                             Xem cập nhật
                         </div>
-                        <a href="#register" class="hero_button"
+                        <a
+                            id="register_event"
+                            href="#register"
+                            class="hero_button"
                             >Đăng kí tham gia</a
                         >
+                        <a
+                            href="https://onelink.to/crswk7"
+                            target="_blank"
+                            class="hero_button dowload_app_mb"
+                        >
+                            <p>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M12 3v10m0 0l-4-4m4 4l4-4"
+                                        stroke="#000"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M4 17v3h16v-3"
+                                        stroke="#000"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span>Tải App GMUP</span>
+                            </p>
+                        </a>
                     </div>
                     <!-- <div class="hero_mouse">
                         <img src="./imgs/mouse.svg" alt="" />
@@ -409,12 +366,7 @@
                             target="_blank"
                             class="update_item"
                         >
-                            <div
-                                style="
-                                    background-image: url(./imgs/home/blog1/banner.jpg);
-                                "
-                                class="update_img"
-                            ></div>
+                            <div class="update_img"></div>
                             <div class="update_content">
                                 <div class="update_top">
                                     <div class="update_top_icon">
@@ -492,6 +444,7 @@
                         </div>
                     </div>
                     <div id="event_list" class="event_list"></div>
+                    <div id="event_pagination"></div>
                 </div>
             </section>
 
@@ -606,7 +559,9 @@
                     </div>
                     <div class="register_input">
                         <!-- <input type="text" placeholder="you@example.com" /> -->
-                        <button id="openModalBtn">Đăng ký</button>
+                        <button class="openModalBtn" id="openModalBtn">
+                            Đăng ký
+                        </button>
                     </div>
                 </div>
             </section>
@@ -628,6 +583,39 @@
                             </div>
                         </div>
                         <div class="footer_right">
+                            <div class="footer_QR">
+                                <img src="./imgs/qr.png" alt="" />
+                            </div>
+                            <a
+                                href="https://onelink.to/crswk7"
+                                target="_blank"
+                                class="button button_download"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M12 3v10m0 0l-4-4m4 4l4-4"
+                                        stroke="#000"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M4 17v3h16v-3"
+                                        stroke="#000"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span>Tải App GMUP</span>
+                            </a>
                             <div class="footer_social">
                                 <a href="#"
                                     ><img
@@ -709,222 +697,7 @@
         <script src="./lib/ScrollTrigger.min.js"></script>
         <script src="./lib/swiper-bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis/dist/lenis.min.js"></script>
-        <script src="./js/main.js?v=1.4"></script>
-        <script src="./js/home.js?v=1.4"></script>
-        <script>
-            const API_URL =
-                "https://api.myspa.vn/v1/organizations/demozns/news?filter[status]=true&sort=-created_date";
-
-            async function loadNews() {
-                try {
-                    const res = await fetch(API_URL);
-                    if (!res.ok) throw new Error("Network error");
-
-                    const json = await res.json();
-                    const data = json.context?.data || [];
-                    console.log("data :>> ", data);
-
-                    // Lọc bài hợp lệ
-                    const activeNews = data.filter(
-                        (item) =>
-                            item.deleted === 0 &&
-                            item.status === true &&
-                            item.id !== 3
-                    );
-                    console.log("activeNews :>> ", activeNews);
-
-                    renderNewsUI(activeNews);
-                } catch (err) {
-                    console.error(err);
-                    const container = document.getElementById("eventList");
-                    if (container) {
-                        container.innerHTML =
-                            '<p class="text-center">Không thể tải tin tức, vui lòng thử lại sau.</p>';
-                    }
-                }
-            }
-
-            // format "2025-12-02 17:15:29" -> "2.12.2025"
-            function formatDate(dateStr) {
-                if (!dateStr) return "";
-                const d = new Date(dateStr.replace(" ", "T")); // cho chắc
-                const day = d.getDate();
-                const month = d.getMonth() + 1;
-                const year = d.getFullYear();
-                return `${day}.${month}.${year}`;
-            }
-
-            // Lấy tóm tắt text từ content HTML
-            function extractSummary(html, maxLength = 180) {
-                if (!html) return "";
-                const temp = document.createElement("div");
-                temp.innerHTML = html;
-                let text = temp.textContent || temp.innerText || "";
-                text = text.trim();
-
-                if (text.length > maxLength) {
-                    text = text.slice(0, maxLength).trim() + "...";
-                }
-                return text;
-            }
-
-            function renderNewsUI(list) {
-                const container = document.getElementById("event_list");
-                if (!container) return;
-
-                if (!list.length) {
-                    container.innerHTML =
-                        '<p class="text-center">Hiện chưa có tin tức nào.</p>';
-                    return;
-                }
-
-                const html = list
-                    .slice(0, 7) // giữ logic cũ
-                    .map((item) => {
-                        const date = formatDate(item.created_date);
-                        const desc = extractSummary(item.content, 220);
-                        const image =
-                            item.image_url || "./imgs/home/update_project.png";
-
-                        const detailUrl = `/blog-news.html?id=${item.id}`;
-
-                        return `
-                <a
-                    target="_blank"
-                    href="${detailUrl}"
-                    class="update_item"
-                >
-                    <div class="update_img blog_img">
-                        <img
-                            src="${image}"
-                            alt="${item.title}"
-                        />
-                    </div>
-                    <div class="update_content">
-                        <div class="update_top">
-                            <div class="update_top_icon">
-                                <img
-                                    src="./imgs/home/clock_black.svg"
-                                    alt="clock"
-                                />
-                                <span>${date}</span>
-                            </div>
-                            <div class="update_top_icon">
-                                <img
-                                    src="./imgs/home/map-pin-black.svg"
-                                    alt="map-pin"
-                                />
-                                <span>HCM</span>
-                            </div>
-                        </div>
-                        <h3 class="update_title text-truncate-1">
-                            ${item.title}
-                        </h3>
-                        <p class="update_desc text-truncate-3">
-                            ${desc}
-                        </p>
-                        <div class="update_category_item mouse_hover">
-                            Đọc thêm
-                        </div>
-                    </div>
-                </a>
-            `;
-                    })
-                    .join("");
-
-                container.innerHTML = html;
-            }
-
-            // chạy khi load trang
-            document.addEventListener("DOMContentLoaded", loadNews);
-        </script>
-        <script>
-            const BLOG_LIST_API =
-                "https://api.myspa.vn/v1/organizations/demozns/news?filter[status]=true";
-
-            function formatDate(dateStr) {
-                if (!dateStr) return "";
-                const d = new Date(dateStr.replace(" ", "T"));
-                if (isNaN(d.getTime())) return dateStr;
-                const day = d.getDate();
-                const month = d.getMonth() + 1;
-                const year = d.getFullYear();
-                return `${day}.${month}.${year}`;
-            }
-
-            // Lấy text ngắn từ content HTML
-            function extractSummary(html, maxLength = 220) {
-                if (!html) return "";
-                const temp = document.createElement("div");
-                temp.innerHTML = html;
-                let text = temp.textContent || temp.innerText || "";
-                text = text.trim();
-                if (text.length > maxLength) {
-                    text = text.slice(0, maxLength).trim() + "...";
-                }
-                return text;
-            }
-
-            async function loadFeaturedBlog() {
-                const wrapper = document.querySelector(".update_list");
-                if (!wrapper) return;
-
-                const linkEl = wrapper.querySelector(".update_item");
-                const imgBox = wrapper.querySelector(".update_img");
-                const dateSpan = wrapper.querySelector(".update_top_icon span"); // span đầu tiên là ngày
-                const titleEl = wrapper.querySelector(".update_title");
-                const descEl = wrapper.querySelector(".update_desc");
-
-                try {
-                    const res = await fetch(BLOG_LIST_API);
-                    if (!res.ok) throw new Error("Network error");
-
-                    const json = await res.json();
-                    const list = (json.context && json.context.data) || [];
-
-                    // Lọc bài hợp lệ
-                    const active = list.filter(
-                        (item) =>
-                            item.deleted === 0 &&
-                            item.status === true &&
-                            item.id === 3
-                    );
-
-                    const first = active[0];
-
-                    if (!active.length) return;
-
-                    // URL detail: dùng page blog-news.html?id=ID (theo file detail trước đó)
-                    const detailUrl = `/blog-news.html?id=${first.id}`;
-
-                    if (linkEl) {
-                        linkEl.href = detailUrl;
-                    }
-
-                    if (imgBox) {
-                        const bg =
-                            first.image_url || "./imgs/home/blog1/banner.jpg";
-                        imgBox.style.backgroundImage = `url(${bg})`;
-                    }
-
-                    if (dateSpan) {
-                        dateSpan.textContent = formatDate(first.created_date);
-                    }
-
-                    if (titleEl) {
-                        titleEl.textContent = first.title || "";
-                    }
-
-                    if (descEl) {
-                        descEl.textContent = extractSummary(first.content);
-                    }
-                } catch (err) {
-                    console.error("Error loadFeaturedBlog:", err);
-                    // Có thể giữ nội dung hardcode làm fallback
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", loadFeaturedBlog);
-        </script>
+        <script src="./js/main.js?v=1.6"></script>
+        <script src="./js/home.js?v=1.6"></script>
     </body>
 </html>
