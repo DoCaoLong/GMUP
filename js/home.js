@@ -97,7 +97,7 @@ document.addEventListener("keydown", function (e) {
 const API_URL =
     "https://api.myspa.vn/v1/organizations/demozns/news?filter[status]=true&sort=-created_date";
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 6;
 let NEWS_CACHE = [];
 let CURRENT_PAGE = 1;
 
@@ -158,7 +158,7 @@ function renderPage(page) {
     renderNewsUI(pageItems);
 }
 
-function getPaginationModel(totalPages, currentPage, maxNumbers = 5) {
+function getPaginationModel(totalPages, currentPage, maxNumbers = 6) {
     // Trả về mảng gồm: số trang hoặc "..."
     if (totalPages <= maxNumbers) {
         return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -206,7 +206,7 @@ function renderPagination() {
     const prevDisabled = CURRENT_PAGE === 1 ? "disabled" : "";
     const nextDisabled = CURRENT_PAGE === totalPages ? "disabled" : "";
 
-    const model = getPaginationModel(totalPages, CURRENT_PAGE, 5);
+    const model = getPaginationModel(totalPages, CURRENT_PAGE, 6);
 
     const pagesHtml = model
         .map((it) => {

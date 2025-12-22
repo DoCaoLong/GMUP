@@ -418,8 +418,6 @@ const distanceMain = countDownDateMain - nowTimeMain;
 
 if (distanceMain <= 0) {
     document.querySelectorAll(".openModalBtn").forEach((el) => {
-        el.innerText = "Kết thúc đăng ký";
-        el.style.opacity = "0.5";
-        el.disabled = true;
+        el.style.display = "none";
     });
 }
