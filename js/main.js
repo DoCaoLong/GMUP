@@ -19,45 +19,7 @@ gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
 });
 
-var swiper = new Swiper(".swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 5,
-        slideShadows: false,
-    },
-    loop: true,
-    // Navigation arrows
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    keyboard: {
-        enabled: true,
-    },
-    mousewheel: {
-        thresholdDelta: 70,
-    },
-    breakpoints: {
-        560: {
-            slidesPerView: 2.5,
-        },
-        768: {
-            slidesPerView: 3,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-});
+
 // header background opacity on scroll
 const header = document.querySelector(".header");
 
@@ -403,21 +365,21 @@ document.addEventListener("keydown", (e) => {
 
 // close popup
 
-const countDownDateMain = new Date(
-    new Date("2025-12-17T23:59:59").toLocaleString("en-US", {
-        timeZone: "Asia/Ho_Chi_Minh",
-    })
-).getTime();
+// const countDownDateMain = new Date(
+//     new Date("2025-12-17T23:59:59").toLocaleString("en-US", {
+//         timeZone: "Asia/Ho_Chi_Minh",
+//     })
+// ).getTime();
 
-const nowMain = new Date().toLocaleString("en-US", {
-    timeZone: "Asia/Ho_Chi_Minh",
-});
-const nowTimeMain = new Date(nowMain).getTime();
+// const nowMain = new Date().toLocaleString("en-US", {
+//     timeZone: "Asia/Ho_Chi_Minh",
+// });
+// const nowTimeMain = new Date(nowMain).getTime();
 
-const distanceMain = countDownDateMain - nowTimeMain;
+// const distanceMain = countDownDateMain - nowTimeMain;
 
-if (distanceMain <= 0) {
-    document.querySelectorAll(".openModalBtn").forEach((el) => {
-        el.style.display = "none";
-    });
-}
+// if (distanceMain <= 0) {
+//     document.querySelectorAll(".openModalBtn").forEach((el) => {
+//         el.style.display = "none";
+//     });
+// }

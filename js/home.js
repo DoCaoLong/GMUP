@@ -1,4 +1,3 @@
-// Ngày kết thúc: 18/11/2025 00:00:00 GMT+7
 const countDownDate = new Date(
     new Date("2025-12-17T23:59:59").toLocaleString("en-US", {
         timeZone: "Asia/Ho_Chi_Minh",
@@ -22,11 +21,11 @@ const timer = setInterval(() => {
         document.querySelector(".hero_countdowns").style.display = "none";
         document.querySelector("#register_event").style.display = "none";
 
-        document.querySelectorAll(".openModalBtn").forEach((el) => {
-            el.innerText = "Kết thúc đăng ký";
-            el.style.opacity = "0.5";
-            el.disabled = true;
-        });
+        // document.querySelectorAll(".openModalBtn").forEach((el) => {
+        //     el.innerText = "Kết thúc đăng ký";
+        //     el.style.opacity = "0.5";
+        //     el.disabled = true;
+        // });
         // document.querySelectorAll(".countdown_item").forEach((el) => {
         //     el.innerHTML = "";
         // });
@@ -319,10 +318,7 @@ function renderNewsUI(list) {
         .join("");
 }
 
-document.addEventListener("DOMContentLoaded", loadNews);
-
 // close blog list
-
 
 // blog single
 const BLOG_LIST_API =
@@ -407,4 +403,81 @@ async function loadFeaturedBlog() {
     }
 }
 
+async function loadGallery() {
+    const images = [
+        "slider_1.png",
+        "slider_2.png",
+        "slider_3.png",
+        "slider_4.png",
+        "slider_5.png",
+        "slider_6.png",
+        "slider_7.png",
+        "slider_8.png",
+        "slider_9.png",
+        "slider_10.png",
+        "slider_11.png",
+        "slider_12.jpg",
+        "slider_13.jpg",
+        "slider_14.jpg",
+        "slider_15.jpg",
+        "slider_16.jpg",
+        "slider_17.jpg",
+    ];
+
+    const wrapper = document.querySelector("#gallery_slider .swiper-wrapper");
+
+    wrapper.innerHTML = images
+        .map(
+            (fileName) => `
+            <div class="swiper-slide swiper-slide--one">
+                <div class="slide-content">
+                    <img src="./imgs/home/slider_gallery/${fileName}" alt="">
+                </div>
+            </div>`
+        )
+        .join("");
+
+    var swiper = new Swiper(".swiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 5,
+            slideShadows: false,
+        },
+        loop: true,
+        // Navigation arrows
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        keyboard: {
+            enabled: true,
+        },
+        mousewheel: {
+            thresholdDelta: 70,
+        },
+        breakpoints: {
+            560: {
+                slidesPerView: 2.5,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+}
+
 document.addEventListener("DOMContentLoaded", loadFeaturedBlog);
+document.addEventListener("DOMContentLoaded", loadGallery);
+document.addEventListener("DOMContentLoaded", loadNews);
