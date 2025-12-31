@@ -245,6 +245,7 @@ main {
     }
     .blog-layout {
         flex-direction: column;
+        margin-bottom: 48px;
     }
     .blog_main {
         width: 100%;

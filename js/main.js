@@ -133,7 +133,7 @@ function createIntroTimeline() {
             ".hero_desc",
             ".hero_location",
             ".hero_time",
-            ".dowload_app_mb",
+            ".openModalBtn",
             ".dowload_app",
         ],
         {
@@ -184,7 +184,7 @@ function createIntroTimeline() {
             { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
         )
-        .to(".dowload_app_mb", { opacity: 1, y: 0, duration: 0.08 }, "-=0.1")
+        .to(".openModalBtn", { opacity: 1, y: 0, duration: 0.08 }, "-=0.1")
 
         .to(
             ".hero_buttons a",
