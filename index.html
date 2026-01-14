@@ -1,172 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Glowme Up" />
-        <meta
-            name="keywords"
-            content="Glowme, beauty, makeup, skincare, cosmetics"
-        />
-        <meta name="author" content="Glowme Up" />
-        <meta property="og:title" content="Glowme Up" />
-        <meta
-            property="og:description"
-            content="Khám phá Glowme Up - nâng tầm phong cách và vẻ đẹp của bạn"
-        />
-        <meta property="og:image" content="./imgs/glowme_logo.png" />
-        <meta property="og:url" content="" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <title>Glowme Up | Trang chủ</title>
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="./imgs/apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="./imgs/favicon_io/favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="./imgs/favicon_io/favicon-16x16.png"
-        />
-        <link rel="manifest" href="./imgs/favicon_io/site.webmanifest" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-        />
-        <link rel="stylesheet" href="./css/main.css?v=1.7" />
-        <link rel="stylesheet" href="./css/home.css?v=1.8" />
 
-        <!-- Google Tag Manager -->
-        <script>
-            (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    "gtm.start": new Date().getTime(),
-                    event: "gtm.js",
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != "dataLayer" ? "&l=" + l : "";
-                j.async = true;
-                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-MWKV8R3");
-        </script>
-        <!-- End Google Tag Manager -->
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Glowme Up" />
+    <meta name="keywords" content="Glowme, beauty, makeup, skincare, cosmetics" />
+    <meta name="author" content="Glowme Up" />
+    <meta property="og:title" content="Glowme Up" />
+    <meta property="og:description" content="Khám phá Glowme Up - nâng tầm phong cách và vẻ đẹp của bạn" />
+    <meta property="og:image" content="./imgs/glowme_logo.png" />
+    <meta property="og:url" content="" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Glowme Up | Trang chủ</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./imgs/favicon_io/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./imgs/favicon_io/favicon-16x16.png" />
+    <link rel="manifest" href="./imgs/favicon_io/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/main.css?v=1.7" />
+    <link rel="stylesheet" href="./css/home.css?v=1.9" />
 
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript
-            ><iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-MWKV8R3"
-                height="0"
-                width="0"
-                style="display: none; visibility: hidden"
-            ></iframe
-        ></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js",
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-MWKV8R3");
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
 
-        <!-- Loader -->
-        <div id="preloader">
-            <div class="line-slice"></div>
-            <div class="preloader-overlay"></div>
-        </div>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWKV8R3" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
 
-        <div id="glowmePage" class="glowmePage">
-            <header class="header">
-                <a href="#hero" class="header_logo">
-                    <img src="./imgs/home/logo.svg" alt="Glow Me Up" />
-                </a>
-                <nav class="header_nav" id="mobileMenu">
-                    <ul>
-                        <li><a href="#event">Sự kiện</a></li>
-                        <li><a href="#update">Cập nhật</a></li>
-                        <li><a href="#register">Nhận thông báo</a></li>
-                    </ul>
-                    <button class="close_menu" id="close_menu">
-                        <img src="./imgs/cancel.png" alt="" />
-                    </button>
-                </nav>
-                <button class="menu_toggle" id="menuToggle">
-                    <img src="./imgs/hambuger.svg" alt="" />
+    <!-- Loader -->
+    <div id="preloader">
+        <div class="line-slice"></div>
+        <div class="preloader-overlay"></div>
+    </div>
+
+    <div id="glowmePage" class="glowmePage">
+        <header class="header">
+            <a href="#hero" class="header_logo">
+                <img src="./imgs/home/logo.svg" alt="Glow Me Up" />
+            </a>
+            <nav class="header_nav" id="mobileMenu">
+                <ul>
+                    <li><a href="#event">Sự kiện</a></li>
+                    <li><a href="#update">Cập nhật</a></li>
+                    <li><a href="#register">Nhận thông báo</a></li>
+                </ul>
+                <button class="close_menu" id="close_menu">
+                    <img src="./imgs/cancel.png" alt="" />
                 </button>
-            </header>
+            </nav>
+            <button class="menu_toggle" id="menuToggle">
+                <img src="./imgs/hambuger.svg" alt="" />
+            </button>
+        </header>
 
-            <section id="hero" class="hero">
-                <div class="hero_container">
-                    <div class="hero_text">
-                        <div class="hero_text_icon">
-                            <img src="./imgs/home/AI.svg" alt="" />
-                        </div>
-                        <p>GlowMeUp = Beauty × Technology × AI</p>
+        <section id="hero" class="hero">
+            <div class="hero_container">
+                <div class="hero_text">
+                    <div class="hero_text_icon">
+                        <img src="./imgs/home/AI.svg" alt="" />
                     </div>
-                    <div class="hero_logo">
-                        <img src="./imgs/glowme_logo.png" alt="" />
+                    <p>GlowMeUp = Beauty × Technology × AI</p>
+                </div>
+                <div class="hero_logo">
+                    <img src="./imgs/glowme_logo.png" alt="" />
+                </div>
+                <h1 class="hero_title">SỰ KIỆN RA MẮT ỨNG DỤNG</h1>
+                <p class="hero_location">Tại Capella Gallery Hall</p>
+                <p class="hero_desc">
+                    24, đường Ba Tháng Hai, Phường Hòa Hưng, HCM
+                </p>
+                <p class="hero_time">
+                    <span>8H - 12H</span> <span>Thứ Năm 18.12.2025</span>
+                </p>
+                <div class="dowload_app">
+                    <div class="footer_QR">
+                        <img src="./imgs/qr.png" alt="" />
                     </div>
-                    <h1 class="hero_title">SỰ KIỆN RA MẮT ỨNG DỤNG</h1>
-                    <p class="hero_location">Tại Capella Gallery Hall</p>
-                    <p class="hero_desc">
-                        24, đường Ba Tháng Hai, Phường Hòa Hưng, HCM
-                    </p>
-                    <p class="hero_time">
-                        <span>8H - 12H</span> <span>Thứ Năm 18.12.2025</span>
-                    </p>
-                    <div class="dowload_app">
-                        <div class="footer_QR">
-                            <img src="./imgs/qr.png" alt="" />
-                        </div>
+                </div>
+                <div class="hero_countdowns">
+                    <div class="countdown_item">
+                        <span class="countdown_number" id="days">00</span>
+                        <span class="countdown_label">Ngày</span>
                     </div>
-                    <div class="hero_countdowns">
-                        <div class="countdown_item">
-                            <span class="countdown_number" id="days">00</span>
-                            <span class="countdown_label">Ngày</span>
-                        </div>
-                        <div class="countdown_item">
-                            <span class="countdown_number" id="hours">00</span>
-                            <span class="countdown_label">Giờ</span>
-                        </div>
-                        <div class="countdown_item">
-                            <span class="countdown_number" id="minutes"
-                                >00</span
-                            >
-                            <span class="countdown_label">Phút</span>
-                        </div>
-                        <div class="countdown_item">
-                            <span class="countdown_number" id="seconds"
-                                >00</span
-                            >
-                            <span class="countdown_label">Giây</span>
-                        </div>
+                    <div class="countdown_item">
+                        <span class="countdown_number" id="hours">00</span>
+                        <span class="countdown_label">Giờ</span>
                     </div>
-                    <div class="hero_buttons">
-                        <div
-                            id="openVideoBtn"
-                            class="button hero_button mouse_hover"
-                        >
-                            Xem cập nhật
-                        </div>
-                        <a
-                            id="register_event"
-                            href="#register"
-                            class="button hero_button"
-                            >Đăng kí tham gia</a
-                        >
-                        <div
-                            id="openModalBtn"
-                            target="_blank"
-                            class="button hero_button dowload_app_mb mouse_hover"
-                        >
-                            <p>
-                                <!-- <svg
+                    <div class="countdown_item">
+                        <span class="countdown_number" id="minutes">00</span>
+                        <span class="countdown_label">Phút</span>
+                    </div>
+                    <div class="countdown_item">
+                        <span class="countdown_number" id="seconds">00</span>
+                        <span class="countdown_label">Giây</span>
+                    </div>
+                </div>
+                <div class="hero_buttons">
+                    <div id="openVideoBtn" class="button hero_button mouse_hover">
+                        Xem cập nhật
+                    </div>
+                    <a id="register_event" href="#register" class="button hero_button">Đăng kí tham gia</a>
+                    <div id="openModalBtn" target="_blank" class="button hero_button dowload_app_mb mouse_hover">
+                        <p>
+                            <!-- <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="20"
                                     height="20"
@@ -189,318 +145,257 @@
                                         stroke-linejoin="round"
                                     />
                                 </svg> -->
-                                <span>Đăng ký đối tác</span>
-                            </p>
-                        </div>
+                            <span>Đăng ký đối tác</span>
+                        </p>
                     </div>
-                    <!-- <div class="hero_mouse">
+                </div>
+                <!-- <div class="hero_mouse">
                         <img src="./imgs/mouse.svg" alt="" />
                     </div> -->
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="glowme">
-                <div class="glowme_circle_1"></div>
-                <div class="container">
-                    <div class="glowme_top section">
-                        <div class="glowme_decor">
-                            <img src="./imgs/home/champhaylight.svg" alt="" />
-                        </div>
-                        <div class="glowme_title">
-                            <h2>GlowMeUp</h2>
-                            <p>Tái định nghĩa kỷ nguyên làm đẹp</p>
-                        </div>
-                        <div class="glowme_decor_star">
-                            <img src="./imgs/home/star-yellow.svg" alt="" />
-                        </div>
+        <section class="glowme">
+            <div class="glowme_circle_1"></div>
+            <div class="container">
+                <div class="glowme_top section">
+                    <div class="glowme_decor">
+                        <img src="./imgs/home/champhaylight.svg" alt="" />
                     </div>
-                    <div class="glowme_content section">
-                        <p class="bold">GlowMeUp là gì?</p>
-                        <p style="margin-top: 4px" class="text-normal">
-                            GlowMeUp là một ứng dụng cầu nối giúp spa/salon kết
-                            nối khách hàng nhanh hơn, thông minh hơn và hiệu quả
-                            hơn thông qua nền tảng booking, gợi ý dịch vụ theo
-                            mood và xây dựng trải nghiệm khách hàng cá nhân hóa.
-                        </p>
-                        <p class="bold text-bussiness">
-                            GlowMeUp mang lại gì cho chủ doanh nghiệp?
-                        </p>
-                        <ul>
-                            <li>
-                                <img
-                                    src="./imgs/home/start.svg"
-                                    alt=""
-                                    class="icon"
-                                />
-                                <span
-                                    >Tiếp cận tệp khách hàng với quy mô lên đến
-                                    5 triệu người dùng tại Việt Nam</span
-                                >
-                            </li>
-                            <li>
-                                <img
-                                    src="./imgs/home/start.svg"
-                                    alt=""
-                                    class="icon"
-                                />
-                                <span>
-                                    Tăng tỷ lệ chuyển đổi lên tới 300% nhờ hệ
-                                    thống UX/UI trực quan, thân thiện với người
-                                    dùng và giúp giảm tối đa các điểm rơi trong
-                                    hành trình khách hàng</span
-                                >
-                            </li>
-                            <li>
-                                <img
-                                    src="./imgs/home/start.svg"
-                                    alt=""
-                                    class="icon"
-                                />
-                                <span>
-                                    Tự động hóa trong toàn bộ hành trình khách
-                                    hàng, giảm tới 80% thời gian và công sức cho
-                                    các công đoạn: Tư vấn, đặt lịch, check-in,
-                                    chăm sóc sau bán và thu thập phản hồi</span
-                                >
-                            </li>
-                            <li>
-                                <img
-                                    src="./imgs/home/start.svg"
-                                    alt=""
-                                    class="icon"
-                                />
-                                <span>
-                                    Tăng tỉ lệ khách hàng quay lại tới 92% nhờ
-                                    hệ thống CRM tự động tích hợp, giảm thiểu
-                                    chi phí quảng cáo</span
-                                >
-                            </li>
-                        </ul>
+                    <div class="glowme_title">
+                        <h2>GlowMeUp</h2>
+                        <p>Tái định nghĩa kỷ nguyên làm đẹp</p>
                     </div>
-                    <p class="glowme_text section">
-                        Hãy cùng GlowMeUp thúc đẩy sự đổi mới và nâng tầm ngành
-                        làm đẹp, chăm sóc sức khỏe thông qua những giải pháp đột
-                        phá và bền vững.
+                    <div class="glowme_decor_star">
+                        <img src="./imgs/home/star-yellow.svg" alt="" />
+                    </div>
+                </div>
+                <div class="glowme_content section">
+                    <p class="bold">GlowMeUp là gì?</p>
+                    <p style="margin-top: 4px" class="text-normal">
+                        GlowMeUp là một ứng dụng cầu nối giúp spa/salon kết
+                        nối khách hàng nhanh hơn, thông minh hơn và hiệu quả
+                        hơn thông qua nền tảng booking, gợi ý dịch vụ theo
+                        mood và xây dựng trải nghiệm khách hàng cá nhân hóa.
                     </p>
+                    <p class="bold text-bussiness">
+                        GlowMeUp mang lại gì cho chủ doanh nghiệp?
+                    </p>
+                    <ul>
+                        <li>
+                            <img src="./imgs/home/start.svg" alt="" class="icon" />
+                            <span>Tiếp cận tệp khách hàng với quy mô lên đến
+                                5 triệu người dùng tại Việt Nam</span>
+                        </li>
+                        <li>
+                            <img src="./imgs/home/start.svg" alt="" class="icon" />
+                            <span>
+                                Tăng tỷ lệ chuyển đổi lên tới 300% nhờ hệ
+                                thống UX/UI trực quan, thân thiện với người
+                                dùng và giúp giảm tối đa các điểm rơi trong
+                                hành trình khách hàng</span>
+                        </li>
+                        <li>
+                            <img src="./imgs/home/start.svg" alt="" class="icon" />
+                            <span>
+                                Tự động hóa trong toàn bộ hành trình khách
+                                hàng, giảm tới 80% thời gian và công sức cho
+                                các công đoạn: Tư vấn, đặt lịch, check-in,
+                                chăm sóc sau bán và thu thập phản hồi</span>
+                        </li>
+                        <li>
+                            <img src="./imgs/home/start.svg" alt="" class="icon" />
+                            <span>
+                                Tăng tỉ lệ khách hàng quay lại tới 92% nhờ
+                                hệ thống CRM tự động tích hợp, giảm thiểu
+                                chi phí quảng cáo</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="glowme_circle_2"></div>
-            </section>
+                <p class="glowme_text section">
+                    Hãy cùng GlowMeUp thúc đẩy sự đổi mới và nâng tầm ngành
+                    làm đẹp, chăm sóc sức khỏe thông qua những giải pháp đột
+                    phá và bền vững.
+                </p>
+            </div>
+            <div class="glowme_circle_2"></div>
+        </section>
 
-            <section class="roadmap">
-                <div class="container section">
-                    <div class="roadmap_list">
-                        <div class="roadmap_item">
-                            <div class="roadmap_top">
-                                <h3>1</h3>
-                                <p>Kick off Dinner</p>
-                            </div>
-                            <div class="roadmap_bottom">
-                                <p>15.8.2025</p>
-                                <p>Bắt đầu khởi động dự án GlowMeUp</p>
-                            </div>
+        <section class="roadmap">
+            <div class="container section">
+                <div class="roadmap_list">
+                    <div class="roadmap_item">
+                        <div class="roadmap_top">
+                            <h3>1</h3>
+                            <p>Kick off Dinner</p>
                         </div>
-                        <div class="roadmap_item">
-                            <div class="roadmap_top">
-                                <h3>2</h3>
-                                <p>Official Launching Event</p>
-                            </div>
-                            <div class="roadmap_bottom">
-                                <p>18.12.2025</p>
-                                <p>Chính thức ra mắt ứng dụng GlowMeUp</p>
-                            </div>
+                        <div class="roadmap_bottom">
+                            <p>15.8.2025</p>
+                            <p>Bắt đầu khởi động dự án GlowMeUp</p>
                         </div>
-                        <div class="roadmap_item">
-                            <div class="roadmap_top">
-                                <h3>3</h3>
-                                <p>Discover Phase</p>
-                            </div>
-                            <div class="roadmap_bottom">
-                                <p>17.1.2026</p>
-                                <p>Đẩy mạnh tiếp thị đến người dùng cuối</p>
-                            </div>
+                    </div>
+                    <div class="roadmap_item">
+                        <div class="roadmap_top">
+                            <h3>2</h3>
+                            <p>Official Launching Event</p>
                         </div>
-                        <div class="roadmap_item">
-                            <div class="roadmap_top">
-                                <h3>4</h3>
-                                <p>Expansion Phase</p>
-                            </div>
-                            <div class="roadmap_bottom">
-                                <p>1.3.2026</p>
-                                <p>Mở rộng mạng lưới cho đối tác</p>
-                            </div>
+                        <div class="roadmap_bottom">
+                            <p>18.12.2025</p>
+                            <p>Chính thức ra mắt ứng dụng GlowMeUp</p>
                         </div>
-                        <div class="roadmap_item">
-                            <div class="roadmap_top">
-                                <h3>5</h3>
-                                <p>GlowMeUp 2.0 Phase</p>
-                            </div>
-                            <div class="roadmap_bottom">
-                                <p>20.6.2026</p>
-                                <p>Nâng cấp hệ sinh thái Glow Me Up</p>
-                            </div>
+                    </div>
+                    <div class="roadmap_item">
+                        <div class="roadmap_top">
+                            <h3>3</h3>
+                            <p>Discover Phase</p>
+                        </div>
+                        <div class="roadmap_bottom">
+                            <p>17.1.2026</p>
+                            <p>Đẩy mạnh tiếp thị đến người dùng cuối</p>
+                        </div>
+                    </div>
+                    <div class="roadmap_item">
+                        <div class="roadmap_top">
+                            <h3>4</h3>
+                            <p>Expansion Phase</p>
+                        </div>
+                        <div class="roadmap_bottom">
+                            <p>1.3.2026</p>
+                            <p>Mở rộng mạng lưới cho đối tác</p>
+                        </div>
+                    </div>
+                    <div class="roadmap_item">
+                        <div class="roadmap_top">
+                            <h3>5</h3>
+                            <p>GlowMeUp 2.0 Phase</p>
+                        </div>
+                        <div class="roadmap_bottom">
+                            <p>20.6.2026</p>
+                            <p>Nâng cấp hệ sinh thái Glow Me Up</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="update" class="update section">
-                <div class="container">
-                    <div class="title_master">
-                        <div class="title_img">
-                            <img
-                                src="./imgs/home/calendar_yellow1.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div class="title_content">
-                            <h2>Cập nhật dự án</h2>
-                            <p>
-                                Bài viết & hình ảnh về các hoạt động của
-                                GlowMeUp
-                            </p>
-                        </div>
-                        <div class="title_arr">
-                            <img src="./imgs/home/arrow_black.svg" alt="" />
-                        </div>
+        <section id="update" class="update section">
+            <div class="container">
+                <div class="title_master">
+                    <div class="title_img">
+                        <img src="./imgs/home/calendar_yellow1.svg" alt="" />
                     </div>
-                    <div class="update_list">
-                        <a
-                            href="/blog-release.html"
-                            target="_blank"
-                            class="update_item"
-                        >
-                            <div class="update_img"></div>
-                            <div class="update_content">
-                                <div class="update_top">
-                                    <div class="update_top_icon">
-                                        <img
-                                            src="./imgs/home/clock_black.svg"
-                                            alt="clock"
-                                        />
-                                        <span>5.8.2025</span>
-                                    </div>
-                                    <div class="update_top_icon">
-                                        <img
-                                            src="./imgs/home/map-pin-black.svg"
-                                            alt="map-pin"
-                                        />
-                                        <span>HCM</span>
-                                    </div>
+                    <div class="title_content">
+                        <h2>Cập nhật dự án</h2>
+                        <p>
+                            Bài viết & hình ảnh về các hoạt động của
+                            GlowMeUp
+                        </p>
+                    </div>
+                    <div class="title_arr">
+                        <img src="./imgs/home/arrow_black.svg" alt="" />
+                    </div>
+                </div>
+                <div class="update_list">
+                    <div class="update_item" style="cursor: default;">
+                        <div class="update_img">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/mmx-LQfljkQ?si=U32RNFTFnYxYBLcF"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="update_content">
+                            <div class="update_top">
+                                <div class="update_top_icon">
+                                    <img src="./imgs/home/clock_black.svg" alt="clock" />
+                                    <span>5.8.2025</span>
                                 </div>
-                                <h3 class="update_title text-truncate-1">
-                                    Ra Mắt Ứng Dụng GlowMeUp 18/12/2025
-                                </h3>
-                                <p class="update_desc text-truncate-3">
-                                    18/12/2025 là một ngày đáng mong đợi trong
-                                    cộng đồng ngành làm đẹp, khi GlowMeUp – nền
-                                    tảng beauty-tech cá nhân hoá đầu tiên tại
-                                    Việt Nam – sẽ chính thức ra mắt. Với những
-                                    thông tin nhỏ giọt và các teaser bí ẩn, rất
-                                    nhiều người dùng, chủ spa – salon và những
-                                    người quan tâm đến công nghệ làm đẹp đang
-                                    đặt câu hỏi: GlowMeUp là gì?
-                                </p>
-                                <div class="update_category">
-                                    <div class="update_category_item">
-                                        Glow team
-                                    </div>
-                                    <div class="update_category_item">
-                                        Event
-                                    </div>
-                                </div>
-                                <div class="update_gallery">
-                                    <div class="update_gallery_item">
-                                        <img
-                                            src="./imgs/home/image-black.svg"
-                                            alt=""
-                                        />
-                                        <p>Bộ sưu tập hình</p>
-                                    </div>
-                                    <img
-                                        src="./imgs/home/arrow_black_mini.svg"
-                                        alt=""
-                                    />
+                                <div class="update_top_icon">
+                                    <img src="./imgs/home/map-pin-black.svg" alt="map-pin" />
+                                    <span>HCM</span>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="event" class="event section">
-                <div class="container">
-                    <div class="title_master">
-                        <div class="title_img">
-                            <img
-                                src="./imgs/home/calendar_yellow1.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div class="title_content">
-                            <h2>Sự kiện nổi bật</h2>
-                            <p>
-                                Nhật ký phát triển tiến tới Launching 18/12/2025
-                            </p>
-                        </div>
-                        <div class="title_arr">
-                            <img src="./imgs/home/arrow_black.svg" alt="" />
-                        </div>
-                    </div>
-                    <div id="event_list" class="event_list"></div>
-                    <div id="event_pagination"></div>
-                </div>
-            </section>
-
-            <section class="gallery section">
-                <div class="container">
-                    <h2 class="gallery_title">
-                        NHỮNG HÌNH ẢNH NỔI BẬT
-                        <p>GLOW ME UP 2025</p>
-                    </h2>
-                    <div id="gallery_slider" class="slider">
-                        <div class="swiper-container">
-                            <div class="swiper">
-                                <div class="swiper-wrapper"></div>
+                            <h3 class="update_title">
+                                ✨GLOWMEUP – ỨNG DỤNG BEAUTY TECH GIÚP LÀM ĐẸP DỄ HƠN, THÔNG MINH HƠN
+                            </h3>
+                            <div class="update_desc">
+                                <p>GlowMeUp không chỉ là app đặt lịch. Đây là nền tảng Beauty Tech ứng dụng AI để hiểu
+                                    cảm xúc – hành vi – nhu cầu làm đẹp của từng người dùng.</p>
                             </div>
-                            <div class="swiper-button-prev mouse_hover">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-6 h-6"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-                                    />
-                                </svg>
+                            <div class="update_category">
+                                <div class="update_category_item">
+                                    Glow team
+                                </div>
+                                <div class="update_category_item">
+                                    Event
+                                </div>
                             </div>
-                            <div class="swiper-button-next mouse_hover">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-6 h-6"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
+                            <div class="update_gallery">
+                                <div class="update_gallery_item">
+                                    <img src="./imgs/home/image-black.svg" alt="" />
+                                    <p>Bộ sưu tập hình</p>
+                                </div>
+                                <img src="./imgs/home/arrow_black_mini.svg" alt="" />
                             </div>
-                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- <section id="register" class="register section">
+        <section id="event" class="event section">
+            <div class="container">
+                <div class="title_master">
+                    <div class="title_img">
+                        <img src="./imgs/home/calendar_yellow1.svg" alt="" />
+                    </div>
+                    <div class="title_content">
+                        <h2>Sự kiện nổi bật</h2>
+                        <p>
+                            Nhật ký phát triển tiến tới Launching 18/12/2025
+                        </p>
+                    </div>
+                    <div class="title_arr">
+                        <img src="./imgs/home/arrow_black.svg" alt="" />
+                    </div>
+                </div>
+                <div id="event_list" class="event_list"></div>
+                <div id="event_pagination"></div>
+            </div>
+        </section>
+
+        <section class="gallery section">
+            <div class="container">
+                <h2 class="gallery_title">
+                    NHỮNG HÌNH ẢNH NỔI BẬT
+                    <p>GLOW ME UP 2025</p>
+                </h2>
+                <div id="gallery_slider" class="slider">
+                    <div class="swiper-container">
+                        <div class="swiper">
+                            <div class="swiper-wrapper"></div>
+                        </div>
+                        <div class="swiper-button-prev mouse_hover">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+                            </svg>
+                        </div>
+                        <div class="swiper-button-next mouse_hover">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="register" class="register section">
                 <div class="container">
                     <div class="title_master">
                         <div class="title_img">
@@ -528,138 +423,88 @@
                 </div>
             </section> -->
 
-            <footer class="footer">
-                <div class="container">
-                    <div class="footer_wrap">
-                        <div class="footer_left">
-                            <div class="footer_left_logo">
-                                <img src="./imgs/logo_footer.png" alt="" />
-                            </div>
-                            <p class="footer_desc">
-                                Người bạn đồng hành giúp bạn chọn dịch vụ làm
-                                đẹp theo đúng mood
-                            </p>
-                            <div class="footer_website">
-                                <img src="./imgs/home/earth-ping.svg" alt="" />
-                                <a href="https://glowmeup.vn/">glowmeup.vn</a>
-                            </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_wrap">
+                    <div class="footer_left">
+                        <div class="footer_left_logo">
+                            <img src="./imgs/logo_footer.png" alt="" />
                         </div>
-                        <div class="footer_right">
-                            <div class="footer_QR">
-                                <img src="./imgs/qr.png" alt="" />
-                            </div>
-                            <a
-                                href="https://onelink.to/crswk7"
-                                target="_blank"
-                                class="button button_download"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        d="M12 3v10m0 0l-4-4m4 4l4-4"
-                                        stroke="#000"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M4 17v3h16v-3"
-                                        stroke="#000"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                                <span>Tải App GMUP</span>
-                            </a>
-                            <div class="footer_social">
-                                <a href="#"
-                                    ><img
-                                        src="./imgs/home/tiktok-ping1.svg"
-                                        alt="instagram"
-                                /></a>
-                                <a href="#"
-                                    ><img
-                                        src="./imgs/home/instagram-ping1.svg"
-                                        alt="facebook"
-                                /></a>
-                                <a target="_blank" href="https://www.facebook.com/glowmeup25"
-                                    ><img
-                                        src="./imgs/home/facebook-ping1.svg"
-                                        alt="linkedin"
-                                /></a>
-                                <a href="#"
-                                    ><img
-                                        src="./imgs/home/youtube-ping1.svg"
-                                        alt="youtube"
-                                /></a>
-                            </div>
-                            <div class="footer_right_text">
-                                <p>© 2025 GlowMeUp</p>
-                            </div>
+                        <p class="footer_desc">
+                            Người bạn đồng hành giúp bạn chọn dịch vụ làm
+                            đẹp theo đúng mood
+                        </p>
+                        <div class="footer_website">
+                            <img src="./imgs/home/earth-ping.svg" alt="" />
+                            <a href="https://glowmeup.vn/">glowmeup.vn</a>
+                        </div>
+                    </div>
+                    <div class="footer_right">
+                        <div class="footer_QR">
+                            <img src="./imgs/qr.png" alt="" />
+                        </div>
+                        <a href="https://onelink.to/crswk7" target="_blank" class="button button_download">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" aria-hidden="true">
+                                <path d="M12 3v10m0 0l-4-4m4 4l4-4" stroke="#000" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4 17v3h16v-3" stroke="#000" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>Tải App GMUP</span>
+                        </a>
+                        <div class="footer_social">
+                            <a href="#"><img src="./imgs/home/tiktok-ping1.svg" alt="instagram" /></a>
+                            <a href="#"><img src="./imgs/home/instagram-ping1.svg" alt="facebook" /></a>
+                            <a target="_blank" href="https://www.facebook.com/glowmeup25"><img
+                                    src="./imgs/home/facebook-ping1.svg" alt="linkedin" /></a>
+                            <a href="#"><img src="./imgs/home/youtube-ping1.svg" alt="youtube" /></a>
+                        </div>
+                        <div class="footer_right_text">
+                            <p>© 2025 GlowMeUp</p>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </footer>
 
-            <div class="overlay" id="overlay" aria-hidden="true">
-                <div
-                    class="modal"
-                    id="popup"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby="popupTitle"
-                    tabindex="-1"
-                >
-                    <button
-                        class="modal__close"
-                        id="closeModalBtn"
-                        aria-label="Đóng popup"
-                    >
-                        ✕
-                    </button>
-                    <div class="modal__content">
-                        <iframe
-                            id="gmup_iframe"
-                            data-src="https://myspa.vn/glow-me"
-                            src=""
-                            allowfullscreen
-                            referrerpolicy="no-referrer"
-                        ></iframe>
-                    </div>
+        <div class="overlay" id="overlay" aria-hidden="true">
+            <div class="modal" id="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle" tabindex="-1">
+                <button class="modal__close" id="closeModalBtn" aria-label="Đóng popup">
+                    ✕
+                </button>
+                <div class="modal__content">
+                    <iframe id="gmup_iframe" data-src="https://myspa.vn/glow-me" src="" allowfullscreen
+                        referrerpolicy="no-referrer"></iframe>
                 </div>
             </div>
-
-            <div class="overlay" id="videoOverlay">
-                <div class="modalVideo" id="videoModal">
-                    <button class="close-btn" id="closeVideoBtn">
-                        &times;
-                    </button>
-                    <video id="popupVideo" controls>
-                        <source src="./videos/herovideo.mp4" type="video/mp4" />
-                        Trình duyệt của bạn không hỗ trợ video.
-                    </video>
-                </div>
-            </div>
-
-            <div class="cursor"></div>
-            <button href="/" class="back-to-home" title="Back to Home">
-                <img src="./imgs/home/arrow_up_black.svg" alt="" />
-            </button>
         </div>
 
-        <script src="./lib/gsap.min.js"></script>
-        <script src="./lib/ScrollToPlugin.min.js"></script>
-        <script src="./lib/ScrollTrigger.min.js"></script>
-        <script src="./lib/swiper-bundle.min.js"></script>
-        <script src="./lib/lenis.min.js"></script>
-        <script src="./js/main.js?v=1.7"></script>
-        <script src="./js/home.js?v=1.8"></script>
-    </body>
+        <div class="overlay" id="videoOverlay">
+            <div class="modalVideo" id="videoModal">
+                <button class="close-btn" id="closeVideoBtn">
+                    &times;
+                </button>
+                <video id="popupVideo" controls>
+                    <source src="./videos/herovideo.mp4" type="video/mp4" />
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+            </div>
+        </div>
+
+        <div class="cursor"></div>
+        <button href="/" class="back-to-home" title="Back to Home">
+            <img src="./imgs/home/arrow_up_black.svg" alt="" />
+        </button>
+    </div>
+
+    <script src="./lib/gsap.min.js"></script>
+    <script src="./lib/ScrollToPlugin.min.js"></script>
+    <script src="./lib/ScrollTrigger.min.js"></script>
+    <script src="./lib/swiper-bundle.min.js"></script>
+    <script src="./lib/lenis.min.js"></script>
+    <script src="./js/main.js?v=1.7"></script>
+    <script src="./js/home.js?v=1.9"></script>
+</body>
+
 </html>

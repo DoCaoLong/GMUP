@@ -478,6 +478,6 @@ async function loadGallery() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", loadFeaturedBlog);
+// document.addEventListener("DOMContentLoaded", loadFeaturedBlog);
 document.addEventListener("DOMContentLoaded", loadGallery);
 document.addEventListener("DOMContentLoaded", loadNews);
