@@ -80,5 +80,5 @@
 /* Ensure gallery slider styles don't affect video slider */
 .update_img .swiper-button-next,
 .update_img .swiper-button-prev {
-    display: block !important;
+    display: flex !important;
 }
