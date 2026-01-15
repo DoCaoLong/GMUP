@@ -10,9 +10,12 @@
     RewriteRule ^universal$ universal.html [L]
     RewriteRule ^universal/(.*)$ universal.html?path=$1 [L,QSA]
     
-    # Force HTTPS
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # Force HTTPS - DISABLED (handled by load balancer/proxy)
+    # Uncomment if needed and server supports it
+    # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     
     # Force WWW or non-WWW (choose one)
     # RewriteCond %{HTTP_HOST} !^www\. [NC]
