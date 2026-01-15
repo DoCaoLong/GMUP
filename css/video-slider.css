@@ -1,0 +1,84 @@
+/* Video Slider in Update Section - Scoped to prevent conflicts */
+.update_img {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scope all video slider styles under .update_img to prevent conflicts */
+.update_img .video-swiper {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.update_img .video-swiper .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.update_img .video-swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.update_img .video-swiper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* Video Slider Navigation - Scoped */
+.update_img .video-next,
+.update_img .video-prev {
+    color: var(--yellow-color) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.update_img .video-next:after,
+.update_img .video-prev:after {
+    font-size: 18px !important;
+    font-weight: bold;
+    color: var(--yellow-color) !important;
+}
+
+.update_img .video-next:hover,
+.update_img .video-prev:hover {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Video Pagination - Scoped */
+.update_img .video-pagination {
+    bottom: 10px !important;
+    z-index: 10;
+}
+
+.update_img .video-pagination .swiper-pagination-bullet {
+    background: var(--yellow-color) !important;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+}
+
+.update_img .video-pagination .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    width: 24px;
+    border-radius: 5px;
+}
+
+/* Ensure gallery slider styles don't affect video slider */
+.update_img .swiper-button-next,
+.update_img .swiper-button-prev {
+    display: block !important;
+}

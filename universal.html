@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowMeUp - Opening App...</title>
+
+    <!-- Prevent indexing -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- iOS Smart App Banner -->
+    <meta name="apple-itunes-app" content="app-id=6748974475">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #fec93f 0%, #ff9a3c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 20px auto;
+            border: 4px solid rgba(254, 201, 63, 0.3);
+            border-radius: 50%;
+            border-top-color: #fec93f;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fec93f 0%, #ff9a3c 100%);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./imgs/glowme_logo.png" alt="GlowMeUp" style="width: 100%; height: 100%;">
+        </div>
+        <h1>Đang mở ứng dụng...</h1>
+        <p id="message">Vui lòng đợi trong giây lát</p>
+        <div class="spinner"></div>
+
+        <div class="buttons" id="fallbackButtons" style="display: none;">
+            <a href="https://onelink.to/crswk7" class="btn btn-primary">Tải ứng dụng</a>
+            <a href="/" class="btn btn-secondary">Về trang chủ</a>
+        </div>
+    </div>
+
+    <script>
+        // Universal Link Handler
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const path = window.location.pathname.replace('/universal.html', '');
+            const fullPath = path + window.location.search;
+
+            // Deep link configuration
+            const deepLink = `glowmeup://app${fullPath}`;
+            const iosStore = "https://apps.apple.com/us/app/glowmeup/id6748974475";
+            const androidStore = "https://play.google.com/store/apps/details?id=com.myspa.glowmeup";
+
+            // Detect platform
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const fallbackUrl = isAndroid ? androidStore : iosStore;
+
+            let didHide = false;
+            let attemptedOpen = false;
+
+            const cleanup = () => {
+                document.removeEventListener("visibilitychange", visHandler);
+                window.removeEventListener("pagehide", onHide);
+                window.removeEventListener("blur", onHide);
+            };
+
+            const onHide = () => {
+                didHide = true;
+                cleanup();
+            };
+
+            const visHandler = () => {
+                if (document.visibilityState === "hidden") {
+                    onHide();
+                }
+            };
+
+            const showFallback = () => {
+                document.getElementById('message').textContent = 'Không thể mở ứng dụng';
+                document.getElementById('fallbackButtons').style.display = 'flex';
+                document.querySelector('.spinner').style.display = 'none';
+            };
+
+            // Try to open app
+            const tryOpenApp = () => {
+                if (attemptedOpen) return;
+                attemptedOpen = true;
+
+                // Listen for visibility changes
+                document.addEventListener("visibilitychange", visHandler);
+                window.addEventListener("pagehide", onHide);
+                window.addEventListener("blur", onHide);
+
+                // iOS Universal Links
+                if (isIOS) {
+                    // Try universal link first
+                    window.location.href = deepLink;
+
+                    // Fallback after delay
+                    setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            window.location.href = fallbackUrl;
+                        }
+                    }, 2000);
+                }
+                // Android App Links
+                else if (isAndroid) {
+                    // Try intent first
+                    const intent = `intent://app${fullPath}#Intent;scheme=glowmeup;package=com.myspa.glowmeup;end`;
+                    window.location.href = intent;
+
+                    // Fallback after delay
+                    setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            window.location.href = fallbackUrl;
+                        }
+                    }, 2000);
+                }
+                // Desktop or other
+                else {
+                    showFallback();
+                }
+
+                // Show fallback UI after timeout
+                setTimeout(() => {
+                    if (!didHide) {
+                        showFallback();
+                    }
+                }, 3000);
+            };
+
+            // Auto-open on page load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', tryOpenApp);
+            } else {
+                tryOpenApp();
+            }
+
+            // Log for debugging
+            console.log('Universal Link:', {
+                deepLink,
+                fullPath,
+                isIOS,
+                isAndroid,
+                fallbackUrl
+            });
+        })();
+    </script>
+</body>
+
+</html>

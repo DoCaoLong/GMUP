@@ -65,7 +65,7 @@ function openVideoModal() {
     overlayVideo.classList.add("is-open");
     // Reset & play video
     video.currentTime = 0;
-    video.play().catch(() => {});
+    video.play().catch(() => { });
 }
 
 function closeVideoModal() {
@@ -101,6 +101,9 @@ let NEWS_CACHE = [];
 let CURRENT_PAGE = 1;
 
 async function loadNews() {
+    // Check if already loaded
+    if (NEWS_CACHE.length > 0) return;
+
     try {
         const res = await fetch(API_URL, {
             headers: { Accept: "application/json" },
@@ -219,13 +222,11 @@ function renderPagination() {
 
     pag.innerHTML = `
                     <div class="pagination">
-                    <button class="page_btn" data-page="${
-                        CURRENT_PAGE - 1
-                    }" ${prevDisabled}><img src="./imgs/home/arr_left_black.svg" alt="clock" /></button>
+                    <button class="page_btn" data-page="${CURRENT_PAGE - 1
+        }" ${prevDisabled}><img src="./imgs/home/arr_left_black.svg" alt="clock" /></button>
                     ${pagesHtml}
-                    <button class="page_btn" data-page="${
-                        CURRENT_PAGE + 1
-                    }" ${nextDisabled}><img src="./imgs/home/arr_right_black.svg" alt="clock" /></button>
+                    <button class="page_btn" data-page="${CURRENT_PAGE + 1
+        }" ${nextDisabled}><img src="./imgs/home/arr_right_black.svg" alt="clock" /></button>
                     </div>
                 `;
 
@@ -403,7 +404,43 @@ async function loadFeaturedBlog() {
     }
 }
 
+// Video Slider Initialization - separate from gallery
+function initVideoSlider() {
+    const videoSwiperEl = document.querySelector('.video-swiper');
+    if (videoSwiperEl && !videoSwiperEl.classList.contains('swiper-initialized')) {
+        try {
+            const videoSwiper = new Swiper('.video-swiper', {
+                loop: false,
+                // autoplay: {
+                //     delay: 8000,
+                //     disableOnInteraction: false,
+                // },
+                navigation: {
+                    nextEl: '.video-next',
+                    prevEl: '.video-prev',
+                },
+                pagination: {
+                    el: '.video-pagination',
+                    clickable: true,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+            });
+            console.log('Video slider initialized');
+        } catch (error) {
+            console.error('Video slider init error:', error);
+        }
+    }
+}
+
+
+
 async function loadGallery() {
+    // Check if already initialized
+    if (document.querySelector('.swiper-initialized')) return;
+
     const images = [
         "slider_1.png",
         "slider_2.png",
@@ -425,19 +462,20 @@ async function loadGallery() {
     ];
 
     const wrapper = document.querySelector("#gallery_slider .swiper-wrapper");
+    if (!wrapper) return;
 
     wrapper.innerHTML = images
         .map(
             (fileName) => `
             <div class="swiper-slide swiper-slide--one">
                 <div class="slide-content">
-                    <img src="./imgs/home/slider_gallery/${fileName}" alt="">
+                    <img src="./imgs/home/slider_gallery/${fileName}" alt="" >
                 </div>
             </div>`
         )
         .join("");
 
-    var swiper = new Swiper(".swiper", {
+    var swiper = new Swiper("#gallery_slider .swiper", {
         effect: "coverflow",
         grabCursor: true,
         centeredSlides: true,
@@ -478,6 +516,34 @@ async function loadGallery() {
     });
 }
 
-// document.addEventListener("DOMContentLoaded", loadFeaturedBlog);
-document.addEventListener("DOMContentLoaded", loadGallery);
-document.addEventListener("DOMContentLoaded", loadNews);
+// Initialize lazy loading when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialize lazy load utilities
+    if (typeof initLazyLoad === 'function') {
+        initLazyLoad();
+    }
+
+    // Load gallery first
+    loadGallery();
+
+    // Initialize video slider after gallery with small delay
+    setTimeout(() => {
+        initVideoSlider();
+    }, 500);
+
+
+    // Lazy load hero background
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        // Use requestIdleCallback for non-critical background loading
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => {
+                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowme.jpg")';
+            });
+        } else {
+            setTimeout(() => {
+                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowme.jpg")';
+            }, 100);
+        }
+    }
+});

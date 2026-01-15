@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Primary Meta Tags -->
+        <title>Tải GlowMeUp - Ứng Dụng Beauty Tech AI</title>
+        <meta name="title" content="Tải GlowMeUp - Ứng Dụng Beauty Tech AI" />
+        <meta
+            name="description"
+            content="Tải ngay ứng dụng GlowMeUp - Nền tảng Beauty Tech AI giúp đặt lịch spa, salon thông minh"
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Tải GlowMeUp - Ứng Dụng Beauty Tech AI"
+        />
+        <meta property="og:description" content="Tải ngay ứng dụng GlowMeUp" />
+        <meta
+            property="og:image"
+            content="https://glowmeup.vn/imgs/glowme_logo.png"
+        />
+
+        <!-- Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./imgs/favicon_io/favicon-32x32.png"
+        />
+        <link rel="stylesheet" href="./css/main.css?v=1.8" />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: linear-gradient(135deg, #fec93f 0%, #ff9a3c 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .container {
+                background: white;
+                border-radius: 24px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                max-width: 500px;
+                width: 100%;
+                padding: 40px;
+                text-align: center;
+                animation: slideUp 0.6s ease-out;
+            }
+
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 20px;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            .logo img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            h1 {
+                color: #333;
+                font-size: 28px;
+                margin-bottom: 10px;
+                font-weight: 700;
+            }
+
+            .subtitle {
+                color: #666;
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .qr-container {
+                background: #f8f9fa;
+                border-radius: 16px;
+                padding: 30px;
+                margin-bottom: 30px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .qr-container::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(
+                    45deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent
+                );
+                animation: shine 3s infinite;
+            }
+
+            @keyframes shine {
+                0% {
+                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                }
+
+                100% {
+                    transform: translateX(100%) translateY(100%) rotate(45deg);
+                }
+            }
+
+            .qr-code {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+                background: white;
+                padding: 15px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                position: relative;
+                z-index: 1;
+            }
+
+            .qr-code img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .qr-label {
+                margin-top: 15px;
+                color: #555;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            .divider {
+                display: flex;
+                align-items: center;
+                margin: 30px 0;
+                color: #999;
+                font-size: 14px;
+            }
+
+            .divider::before,
+            .divider::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #ddd;
+            }
+
+            .divider span {
+                padding: 0 15px;
+            }
+
+            .download-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                padding: 16px 24px;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                border: none;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.2);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.4s ease;
+                z-index: 0;
+            }
+
+            .btn:hover::before {
+                transform: scaleX(1);
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #fec93f 0%, #ff9a3c 100%);
+                color: #000;
+                font-weight: 700;
+                box-shadow: 0 4px 15px rgba(254, 201, 63, 0.4);
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(254, 201, 63, 0.6);
+            }
+
+            .btn-ios {
+                background: #000;
+                color: white;
+            }
+
+            .btn-ios:hover {
+                background: #333;
+                transform: translateY(-2px);
+            }
+
+            .btn-android {
+                background: #3ddc84;
+                color: white;
+            }
+
+            .btn-android:hover {
+                background: #2cc26f;
+                transform: translateY(-2px);
+            }
+
+            .btn-icon {
+                width: 24px;
+                height: 24px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .btn-text {
+                position: relative;
+                z-index: 1;
+            }
+
+            .features {
+                margin-top: 30px;
+                padding-top: 30px;
+                border-top: 1px solid #eee;
+            }
+
+            .feature-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                background: linear-gradient(135deg, #fec93f 0%, #ff9a3c 100%);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+
+            .feature-text {
+                color: #555;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .loading {
+                display: none;
+                margin-top: 20px;
+                color: #fec93f;
+                font-size: 14px;
+            }
+
+            .loading.active {
+                display: block;
+            }
+
+            .spinner {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 3px solid rgba(254, 201, 63, 0.3);
+                border-radius: 50%;
+                border-top-color: #fec93f;
+                animation: spin 1s linear infinite;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .container {
+                    padding: 30px 20px;
+                }
+
+                h1 {
+                    font-size: 24px;
+                }
+
+                .qr-code {
+                    width: 180px;
+                    height: 180px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="logo">
+                <img src="./imgs/glowme_logo.png" alt="GlowMeUp Logo" />
+            </div>
+
+            <h1>Tải GlowMeUp</h1>
+            <p class="subtitle">Trải nghiệm làm đẹp thông minh với AI</p>
+
+            <div class="qr-container">
+                <div class="qr-code">
+                    <img src="./imgs/qr.png" alt="QR Code Download GlowMeUp" />
+                </div>
+                <p class="qr-label">Quét mã QR để tải ứng dụng</p>
+            </div>
+
+            <div class="divider">
+                <span>HOẶC</span>
+            </div>
+
+            <div class="download-buttons">
+                <a
+                    href="https://onelink.to/crswk7"
+                    class="btn btn-primary"
+                    id="downloadBtn"
+                >
+                    <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12 3v10m0 0l-4-4m4 4l4-4"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                        <path
+                            d="M4 17v3h16v-3"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                    <span class="btn-text">Tải Ứng Dụng</span>
+                </a>
+
+                <a
+                    href="https://apps.apple.com/us/app/glowmeup/id6748974475"
+                    class="btn btn-ios"
+                    target="_blank"
+                >
+                    <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                        />
+                    </svg>
+                    <span class="btn-text">App Store</span>
+                </a>
+
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.myspa.glowmeup"
+                    class="btn btn-android"
+                    target="_blank"
+                >
+                    <svg
+                        class="btn-icon"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"
+                        />
+                    </svg>
+                    <span class="btn-text">Google Play</span>
+                </a>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                Đang mở ứng dụng...
+            </div>
+        </div>
+
+        <script>
+            // // Dynamic Link Handler
+            // const dynamicLink = () => {
+            //     const searchParam = window.location.search;
+            //     const deepLink = `glowmeup://app${searchParam}`;
+            //     const iosStore = "https://apps.apple.com/us/app/glowmeup/id6748974475";
+            //     const androidStore = "https://play.google.com/store/apps/details?id=com.myspa.glowmeup";
+            //     const fallbackUrl = /android/i.test(navigator.userAgent) ? androidStore : iosStore;
+
+            //     let didHide = false;
+
+            //     const onHide = () => {
+            //         didHide = true;
+            //         cleanup();
+            //     };
+
+            //     const cleanup = () => {
+            //         document.removeEventListener("visibilitychange", visHandler);
+            //         window.removeEventListener("pagehide", onHide);
+            //         window.removeEventListener("blur", onHide);
+            //     };
+
+            //     const visHandler = () => {
+            //         if (document.visibilityState === "hidden") onHide();
+            //     };
+
+            //     document.addEventListener("visibilitychange", visHandler);
+            //     window.addEventListener("pagehide", onHide);
+            //     window.addEventListener("blur", onHide);
+
+            //     // Show loading indicator
+            //     const loading = document.getElementById('loading');
+            //     loading.classList.add('active');
+
+            //     const t = setTimeout(() => {
+            //         cleanup();
+            //         loading.classList.remove('active');
+            //         if (!didHide) {
+            //             window.location.href = fallbackUrl;
+            //         }
+            //     }, 1200);
+
+            //     window.location.href = deepLink;
+
+            //     setTimeout(() => {
+            //         if (didHide) {
+            //             clearTimeout(t);
+            //             loading.classList.remove('active');
+            //         }
+            //     }, 50);
+            // };
+
+            // // Auto-run on page load
+            // window.addEventListener('load', () => {
+            //     // Wait a bit for page to render before triggering deep link
+            //     setTimeout(dynamicLink, 500);
+            // });
+
+            // Manual download button
+            document
+                .getElementById("downloadBtn")
+                .addEventListener("click", (e) => {
+                    e.preventDefault();
+                    dynamicLink();
+                });
+
+            // Track button clicks
+            const trackClick = (platform) => {
+                console.log(`Download clicked: ${platform}`);
+                // Add analytics tracking here if needed
+            };
+
+            document
+                .querySelectorAll(".btn-ios, .btn-android")
+                .forEach((btn) => {
+                    btn.addEventListener("click", (e) => {
+                        const platform = e.currentTarget.classList.contains(
+                            "btn-ios"
+                        )
+                            ? "iOS"
+                            : "Android";
+                        trackClick(platform);
+                    });
+                });
+        </script>
+    </body>
+</html>

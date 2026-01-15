@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "MUN2XFY4Z6.com.myspa.glowmeup",
+        "paths": [
+          "/universal.html",
+          "/universal.html/*",
+          "/app/*",
+          "*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "MUN2XFY4Z6.com.myspa.glowmeup"
+    ]
+  }
+}

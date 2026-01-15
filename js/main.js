@@ -1,23 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Khởi tạo Lenis
-const lenis = new Lenis({
-    duration: 0.9,
-    smoothWheel: true,
-    smoothTouch: false,
-    wheelMultiplier: 1.0,
-});
-
-// Chỉ update ScrollTrigger khi Lenis scroll, không phải mỗi frame
-lenis.on("scroll", () => {
-    ScrollTrigger.update();
-});
-
-// Loop mượt bằng GSAP ticker (nhẹ hơn tự tạo rAF riêng)
-gsap.ticker.add((time) => {
-    // GSAP time là giây, Lenis dùng ms
-    lenis.raf(time * 1000);
-});
+// Native smooth scroll - Lenis removed to reduce bundle size (~11KB)
+document.documentElement.style.scrollBehavior = 'smooth';
 
 
 // header background opacity on scroll
@@ -30,7 +14,7 @@ window.addEventListener("scroll", () => {
     if (progress > 1) progress = 1;
     const opacity = progress * 0.8;
     header.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
-});
+}, { passive: true });
 
 // Mobile menu toggle functionality using GSAP
 const toggleButton = document.getElementById("menuToggle");
@@ -293,7 +277,7 @@ window.addEventListener("scroll", () => {
     } else {
         backBtn.style.display = "none";
     }
-});
+}, { passive: true });
 
 backBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

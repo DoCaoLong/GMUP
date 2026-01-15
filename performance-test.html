@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Test - GlowMeUp</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #fec93f;
+            padding-bottom: 10px;
+        }
+
+        .metric {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #fec93f;
+            border-radius: 4px;
+        }
+
+        .metric h3 {
+            margin: 0 0 10px 0;
+            color: #555;
+        }
+
+        .metric .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .metric .description {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .good {
+            color: #28a745;
+        }
+
+        .warning {
+            color: #ffc107;
+        }
+
+        .bad {
+            color: #dc3545;
+        }
+
+        .checklist {
+            margin: 20px 0;
+        }
+
+        .checklist li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        .checklist li.done {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        button {
+            background: #fec93f;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        button:hover {
+            background: #e5b636;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 GlowMeUp Performance Test</h1>
+
+        <div class="checklist">
+            <h2>✅ Optimizations Applied</h2>
+            <ul>
+                <li class="done">✓ Deferred non-critical JavaScript (~270KB)</li>
+                <li class="done">✓ Added resource hints (preconnect, dns-prefetch)</li>
+                <li class="done">✓ Preloaded critical fonts</li>
+                <li class="done">✓ Lazy loaded YouTube iframe</li>
+                <li class="done">✓ Lazy loaded countdown backgrounds</li>
+                <li class="done">✓ Lazy loaded hero background</li>
+                <li class="done">✓ Lazy loaded gallery images</li>
+                <li class="done">✓ Lazy loaded news API calls</li>
+                <li class="done">✓ Added passive scroll listeners</li>
+                <li class="done">✓ Optimized gallery background (scroll vs fixed)</li>
+                <li class="done">✓ Added font-display: swap</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>🧪 Performance Metrics</h2>
+            <button onclick="measurePerformance()">Measure Current Performance</button>
+            <button onclick="window.location.href='../../../index.html'">Open Main Page</button>
+        </div>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function measurePerformance() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Measuring performance...</p>';
+
+            // Use Performance API
+            if (window.performance && window.performance.timing) {
+                const timing = window.performance.timing;
+                const navigation = window.performance.navigation;
+
+                // Calculate metrics
+                const dns = timing.domainLookupEnd - timing.domainLookupStart;
+                const tcp = timing.connectEnd - timing.connectStart;
+                const request = timing.responseStart - timing.requestStart;
+                const response = timing.responseEnd - timing.responseStart;
+                const domProcessing = timing.domComplete - timing.domLoading;
+                const domContentLoaded = timing.domContentLoadedEventEnd - timing.navigationStart;
+                const pageLoad = timing.loadEventEnd - timing.navigationStart;
+
+                // Get paint metrics
+                const paintMetrics = performance.getEntriesByType('paint');
+                let fcp = 0, lcp = 0;
+
+                paintMetrics.forEach(metric => {
+                    if (metric.name === 'first-contentful-paint') {
+                        fcp = metric.startTime;
+                    }
+                });
+
+                // Try to get LCP
+                try {
+                    const observer = new PerformanceObserver((list) => {
+                        const entries = list.getEntries();
+                        const lastEntry = entries[entries.length - 1];
+                        lcp = lastEntry.renderTime || lastEntry.loadTime;
+                    });
+                    observer.observe({ entryTypes: ['largest-contentful-paint'] });
+                } catch (e) {
+                    console.log('LCP not available');
+                }
+
+                // Display results
+                let html = '<div class="metric">';
+                html += '<h3>DNS Lookup</h3>';
+                html += `<div class="value ${dns < 100 ? 'good' : dns < 300 ? 'warning' : 'bad'}">${dns}ms</div>`;
+                html += '<div class="description">Time to resolve domain name</div>';
+                html += '</div>';
+
+                html += '<div class="metric">';
+                html += '<h3>First Contentful Paint (FCP)</h3>';
+                html += `<div class="value ${fcp < 1500 ? 'good' : fcp < 2500 ? 'warning' : 'bad'}">${Math.round(fcp)}ms</div>`;
+                html += '<div class="description">Time until first content is painted (Target: < 1.5s)</div>';
+                html += '</div>';
+
+                html += '<div class="metric">';
+                html += '<h3>DOM Content Loaded</h3>';
+                html += `<div class="value ${domContentLoaded < 2000 ? 'good' : domContentLoaded < 4000 ? 'warning' : 'bad'}">${domContentLoaded}ms</div>`;
+                html += '<div class="description">Time until DOM is fully loaded and parsed</div>';
+                html += '</div>';
+
+                html += '<div class="metric">';
+                html += '<h3>Page Load Complete</h3>';
+                html += `<div class="value ${pageLoad < 3000 ? 'good' : pageLoad < 5000 ? 'warning' : 'bad'}">${pageLoad}ms</div>`;
+                html += '<div class="description">Total time until page is fully loaded</div>';
+                html += '</div>';
+
+                html += '<div class="metric">';
+                html += '<h3>DOM Processing</h3>';
+                html += `<div class="value">${domProcessing}ms</div>`;
+                html += '<div class="description">Time spent processing the DOM</div>';
+                html += '</div>';
+
+                // Resource summary
+                const resources = performance.getEntriesByType('resource');
+                const scripts = resources.filter(r => r.initiatorType === 'script');
+                const styles = resources.filter(r => r.initiatorType === 'link' || r.initiatorType === 'css');
+                const images = resources.filter(r => r.initiatorType === 'img');
+
+                html += '<div class="metric">';
+                html += '<h3>Resources Loaded</h3>';
+                html += `<div class="description">Scripts: ${scripts.length} | Styles: ${styles.length} | Images: ${images.length}</div>`;
+                html += '</div>';
+
+                results.innerHTML = html;
+            } else {
+                results.innerHTML = '<p class="bad">Performance API not available in this browser</p>';
+            }
+        }
+
+        // Auto-measure on load
+        window.addEventListener('load', () => {
+            setTimeout(measurePerformance, 1000);
+        });
+    </script>
+</body>
+
+</html>

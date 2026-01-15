@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.myspa.glowmeup",
+            "sha256_cert_fingerprints": [
+                "E0:4E:62:D6:9D:09:42:E0:AC:D0:22:7E:81:56:70:FF:78:5B:A1:01:3D:50:A6:E1:70:9D:3E:C8:4A:C1:A1:C3"
+            ]
+        }
+    }
+]
