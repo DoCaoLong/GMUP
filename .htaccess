@@ -6,6 +6,10 @@
     RewriteEngine On
     RewriteBase /
     
+    # Universal Link - allow /universal instead of /universal.html
+    RewriteRule ^universal$ universal.html [L]
+    RewriteRule ^universal/(.*)$ universal.html?path=$1 [L,QSA]
+    
     # Force HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

@@ -84,6 +84,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            display: block;
         }
 
         .btn-primary {
@@ -106,7 +107,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="./imgs/glowme_logo.png" alt="GlowMeUp" style="width: 100%; height: 100%;">
+            <img src="./imgs/glowme_logo.png" alt="GlowMeUp" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <h1>Đang mở ứng dụng...</h1>
         <p id="message">Vui lòng đợi trong giây lát</p>
@@ -119,20 +120,22 @@
     </div>
 
     <script>
-        // Universal Link Handler
+        // Universal Link Handler - Safari Compatible
         (function () {
+            // Get path and query params
             const params = new URLSearchParams(window.location.search);
             const path = window.location.pathname.replace('/universal.html', '');
             const fullPath = path + window.location.search;
 
             // Deep link configuration
-            const deepLink = `glowmeup://app${fullPath}`;
+            const deepLink = 'glowmeup://app' + fullPath;
             const iosStore = "https://apps.apple.com/us/app/glowmeup/id6748974475";
             const androidStore = "https://play.google.com/store/apps/details?id=com.myspa.glowmeup";
 
             // Detect platform
             const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
             const isAndroid = /Android/i.test(navigator.userAgent);
+            const isSafari = /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
             const fallbackUrl = isAndroid ? androidStore : iosStore;
 
             let didHide = false;
@@ -171,32 +174,45 @@
                 window.addEventListener("pagehide", onHide);
                 window.addEventListener("blur", onHide);
 
-                // iOS Universal Links
-                if (isIOS) {
-                    // Try universal link first
+                // iOS Safari - use different approach
+                if (isIOS && isSafari) {
+                    // Create invisible iframe for deep link
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = deepLink;
+                    document.body.appendChild(iframe);
+
+                    // Fallback after delay
+                    // setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            window.location.href = fallbackUrl;
+                        }
+                    // }, 2500);
+                }
+                // iOS other browsers
+                else if (isIOS) {
                     window.location.href = deepLink;
 
-                    // Fallback after delay
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         cleanup();
                         if (!didHide) {
                             window.location.href = fallbackUrl;
                         }
-                    }, 2000);
+                    // }, 2000);
                 }
-                // Android App Links
+                // Android
                 else if (isAndroid) {
                     // Try intent first
-                    const intent = `intent://app${fullPath}#Intent;scheme=glowmeup;package=com.myspa.glowmeup;end`;
+                    const intent = 'intent://app' + fullPath + '#Intent;scheme=glowmeup;package=com.myspa.glowmeup;end';
                     window.location.href = intent;
 
-                    // Fallback after delay
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         cleanup();
                         if (!didHide) {
                             window.location.href = fallbackUrl;
                         }
-                    }, 2000);
+                    // }, 2000);
                 }
                 // Desktop or other
                 else {
@@ -204,27 +220,29 @@
                 }
 
                 // Show fallback UI after timeout
-                setTimeout(() => {
+                // setTimeout(() => {
                     if (!didHide) {
                         showFallback();
                     }
-                }, 3000);
+                // }, 3000);
             };
 
             // Auto-open on page load
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', tryOpenApp);
             } else {
-                tryOpenApp();
+                setTimeout(tryOpenApp, 100);
             }
 
-            // Log for debugging
-            console.log('Universal Link:', {
-                deepLink,
-                fullPath,
-                isIOS,
-                isAndroid,
-                fallbackUrl
+            // Debug logging
+            console.log('Universal Link Debug:', {
+                deepLink: deepLink,
+                fullPath: fullPath,
+                isIOS: isIOS,
+                isAndroid: isAndroid,
+                isSafari: isSafari,
+                fallbackUrl: fallbackUrl,
+                userAgent: navigator.userAgent
             });
         })();
     </script>
