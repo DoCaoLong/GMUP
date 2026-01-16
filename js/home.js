@@ -17,7 +17,7 @@ const timer = setInterval(() => {
     if (distance <= 0) {
         clearInterval(timer);
         document.querySelector(".hero_desc").innerHTML =
-            "Ứng dụng đã được phát hành! Qúy khách vui lòng tải ứng dụng để trải nghiệm";
+            "Ứng dụng đã được phát hành! Quý khách vui lòng tải ứng dụng để trải nghiệm";
         document.querySelector(".hero_countdowns").style.display = "none";
         document.querySelector("#register_event").style.display = "none";
 
@@ -59,20 +59,29 @@ const timer = setInterval(() => {
 const openPopupVideo = document.getElementById("openVideoBtn");
 const overlayVideo = document.getElementById("videoOverlay");
 const closeBtnVideo = document.getElementById("closeVideoBtn");
-const video = document.getElementById("popupVideo");
+const videoIframe = document.getElementById("popupVideo");
 
 function openVideoModal() {
     overlayVideo.classList.add("is-open");
-    // Reset & play video
-    video.currentTime = 0;
-    video.play().catch(() => { });
+    // For YouTube iframe, we can reload the src to restart the video
+    if (videoIframe && videoIframe.src) {
+        const currentSrc = videoIframe.getAttribute('src');
+        // Add autoplay parameter if not present
+        if (!currentSrc.includes('autoplay=1')) {
+            const separator = currentSrc.includes('?') ? '&' : '?';
+            videoIframe.src = currentSrc + separator + 'autoplay=1';
+        }
+    }
 }
 
 function closeVideoModal() {
     overlayVideo.classList.remove("is-open");
-    // Dừng video và đưa về đầu
-    video.pause();
-    video.currentTime = 0;
+    // Stop YouTube video by removing and re-adding src without autoplay
+    if (videoIframe) {
+        const currentSrc = videoIframe.getAttribute('src');
+        // Remove autoplay parameter to stop the video
+        videoIframe.src = currentSrc.replace(/[?&]autoplay=1/, '');
+    }
 }
 
 openPopupVideo.addEventListener("click", openVideoModal);

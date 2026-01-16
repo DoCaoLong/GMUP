@@ -57,32 +57,45 @@
 
 /* Nút đóng */
 .close-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100rem;
     position: absolute;
-    top: 12px;
-    right: 16px;
+    top: -15px;
+    right: -15px;
+    background: red;
     font-size: 32px;
     border: none;
-    background: transparent;
     color: #fff;
     cursor: pointer;
     z-index: 10000;
 }
 
-/* VIDEO: cao theo 100vh, ngang theo đúng tỉ lệ gốc */
+/* VIDEO/IFRAME: YouTube Shorts - tỷ lệ 9:16 (video dọc) */
 #popupVideo {
-    height: 90svh;
-    /* chiều cao full màn hình */
-    width: auto;
-    /* chiều ngang tự co theo video, KHÔNG full màn */
-    max-width: 100vw;
-    /* không vượt quá màn hình */
-    object-fit: contain;
-    /* giữ tỉ lệ video */
+    height: 80svh;
+    /* chiều cao 80% màn hình */
+    width: calc(80svh * 9 / 16);
+    /* chiều ngang theo tỉ lệ 9:16 */
+    max-width: 90vw;
+    /* không vượt quá 90% chiều ngang màn hình */
+    border: none;
+    /* loại bỏ border mặc định của iframe */
+    border-radius: 12px;
+    /* bo góc cho đẹp */
 }
 
 @media screen and (max-width: 767.98px) {
     #popupVideo {
-        height: 100svh;
+        height: auto;
+        width: 90vw;
+        max-width: 500px;
+        /* giới hạn width trên mobile */
+        aspect-ratio: 9/16;
+        /* giữ tỉ lệ 9:16 cho video dọc */
     }
 }
 
@@ -272,7 +285,7 @@
 .hero_title {
     color: var(--neutral-01-day, #fff);
     text-align: center;
-    font-size: 70px;
+    font-size: 60px;
     font-style: normal;
     font-weight: 600;
     margin-top: 25px;
@@ -378,7 +391,7 @@
     margin-bottom: 48px;
 }
 
-.hero img{
+.hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1029,12 +1042,12 @@
         font-size: 14px;
     }
 
-    .update_category,
+    #gallery_slider .update_category,
     .update_gallery {
         margin-top: 14px;
     }
 
-    .update_category,
+    #gallery_slider .update_category,
     .update_top {
         gap: 14px;
     }
@@ -1052,7 +1065,7 @@
         padding: 24px;
     }
 
-    .gallery {
+    #gallery_slider .gallery {
         margin: 40px 0;
         padding-bottom: 80px;
     }
@@ -1062,19 +1075,19 @@
         line-height: 1.3;
     }
 
-    .swiper {
+    #gallery_slider .swiper {
         padding: 180px 0;
     }
 
-    .slider {
+    #gallery_slider .slider {
         width: 100%;
     }
 
-    .swiper-slide .slide-content {
+    #gallery_slider .swiper-slide .slide-content {
         width: 180%;
     }
 
-    .swiper-button-next,
+    #gallery_slider .swiper-button-next,
     .swiper-button-prev {
         display: none !important;
     }
@@ -1211,12 +1224,17 @@
         padding: 0;
     }
 
-    .swiper-slide .slide-content {
+    #gallery_slider .swiper-slide .slide-content {
         width: 90%;
     }
 
-    .swiper {
-        padding: 140px 0;
+    #gallery_slider .swiper {
+        padding: 100px 0;
+    }
+
+    .gallery {
+        margin-top: 48px;
+        padding-bottom: 40px;
     }
 
     .glowme_title h2 {
@@ -1375,14 +1393,14 @@
     }
 
     .roadmap_top h3 {
-        font-size: 40px;
+        font-size: 24px;
+        line-height: 1.5;
     }
 
     .roadmap_item {
         gap: 5px;
         padding: 10px;
-        background: rgba(255, 244, 225, 0.2);
-        border: 1px solid var(--branding06, #ffc93f) !important;
+        background: #eeedf2;
         border-radius: 8px;
         flex-shrink: 0;
     }
@@ -1397,7 +1415,7 @@
     }
 
     .roadmap_top p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .roadmap_bottom {
@@ -1411,6 +1429,7 @@
 
     .roadmap_bottom p:nth-child(2) {
         font-size: 12px;
+        line-height: 1.5;
     }
 
     .hero_location {

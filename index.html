@@ -63,7 +63,7 @@
     <!-- Critical CSS -->
     <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/main.css?v=1.8" />
-    <link rel="stylesheet" href="./css/home.css?v=2.0" />
+    <link rel="stylesheet" href="./css/home.css?v=2.1" />
     <link rel="stylesheet" href="./css/video-slider.css" />
 
     <!-- Google Tag Manager -->
@@ -110,8 +110,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": "Sự Kiện Ra Mắt Ứng Dụng GlowMeUp",
-      "description": "Sự kiện ra mắt ứng dụng GlowMeUp - Nền tảng Beauty Tech ứng dụng AI",
+      "name": "TÁI ĐỊNH NGHĨA KỶ NGUYÊN NGÀNH LÀM ĐẸP",
+      "description": "TÁI ĐỊNH NGHĨA KỶ NGUYÊN NGÀNH LÀM ĐẸP - Nền tảng Beauty Tech ứng dụng AI",
       "startDate": "2025-12-18T08:00:00+07:00",
       "endDate": "2025-12-18T12:00:00+07:00",
       "eventStatus": "https://schema.org/EventScheduled",
@@ -194,8 +194,7 @@
                 <div class="hero_logo">
                     <img src="./imgs/glowme_logo.png" alt="GlowMeUp Logo" width="223" height="223" />
                 </div>
-                <h1 class="hero_title">SỰ KIỆN RA MẮT ỨNG DỤNG</h1>
-                <p class="hero_location">Tại Capella Gallery Hall</p>
+                <h1 class="hero_title">TÁI ĐỊNH NGHĨA KỶ NGUYÊN NGÀNH LÀM ĐẸP</h1>
                 <p class="hero_desc">
                     24, đường Ba Tháng Hai, Phường Hòa Hưng, HCM
                 </p>
@@ -420,12 +419,12 @@
                                             loading="lazy"></iframe>
                                     </div>
                                     <div class="swiper-slide">
-                                        <iframe width="560" height="315" 
-                                        src="https://www.youtube.com/embed/9S2l-gF9qt8?si=t1b7MDGWE6PDGyTQ" 
-                                        title="YouTube video player" 
-                                        frameborder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                                        loading="lazy"></iframe>
+                                        <iframe width="560" height="315"
+                                            src="https://www.youtube.com/embed/9S2l-gF9qt8?si=t1b7MDGWE6PDGyTQ"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                            loading="lazy"></iframe>
                                     </div>
                                 </div>
                                 <!-- Navigation -->
@@ -616,10 +615,12 @@
                 <button class="close-btn" id="closeVideoBtn">
                     &times;
                 </button>
-                <video id="popupVideo" controls>
-                    <source src="./videos/herovideo.mp4" type="video/mp4" />
-                    Trình duyệt của bạn không hỗ trợ video.
-                </video>
+                <iframe id="popupVideo" width="100%" height="100%"
+                    src="https://www.youtube.com/embed/yTyYDBG5yqs?si=Z2XDo0-76O5pgh8t" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
             </div>
         </div>
 
@@ -637,7 +638,7 @@
     <script src="./js/main.js?v=1.9" defer></script>
     <!-- Load these after libraries are deferred but execute immediately when available -->
     <script src="./js/lazy-load.js?v=1.2"></script>
-    <script src="./js/home.js?v=2.2"></script>
+    <script src="./js/home.js?v=2.3"></script>
 </body>
 
 </html>

@@ -123,64 +123,64 @@
         // Universal Link Handler - Safari Compatible
         (function () {
             // Analytics & Tracking
-            const logStoreRedirect = (platform, url, params) => {
-                const logData = {
-                    timestamp: new Date().toISOString(),
-                    platform: platform, // 'iOS' or 'Android'
-                    store: platform === 'iOS' ? 'App Store' : 'Google Play',
-                    redirectUrl: url,
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer,
-                    queryParams: params,
-                    screenSize: `${window.screen.width}x${window.screen.height}`,
-                    language: navigator.language
-                };
+            // const logStoreRedirect = (platform, url, params) => {
+            //     const logData = {
+            //         timestamp: new Date().toISOString(),
+            //         platform: platform, // 'iOS' or 'Android'
+            //         store: platform === 'iOS' ? 'App Store' : 'Google Play',
+            //         redirectUrl: url,
+            //         userAgent: navigator.userAgent,
+            //         referrer: document.referrer,
+            //         queryParams: params,
+            //         screenSize: `${window.screen.width}x${window.screen.height}`,
+            //         language: navigator.language
+            //     };
 
-                // Log to console
-                console.log('📊 Store Redirect:', logData);
+            //     // Log to console
+            //     console.log('📊 Store Redirect:', logData);
 
-                // Send to analytics endpoint (if available)
-                if (typeof fetch !== 'undefined') {
-                    fetch('/api/analytics/store-redirect', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(logData)
-                    }).catch(err => console.log('Analytics log failed:', err));
-                }
+            //     // Send to analytics endpoint (if available)
+            //     if (typeof fetch !== 'undefined') {
+            //         fetch('/api/analytics/store-redirect', {
+            //             method: 'POST',
+            //             headers: {
+            //                 'Content-Type': 'application/json',
+            //             },
+            //             body: JSON.stringify(logData)
+            //         }).catch(err => console.log('Analytics log failed:', err));
+            //     }
 
-                // Google Analytics (if available)
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'store_redirect', {
-                        event_category: 'Universal Link',
-                        event_label: platform,
-                        value: 1
-                    });
-                }
+            //     // Google Analytics (if available)
+            //     if (typeof gtag !== 'undefined') {
+            //         gtag('event', 'store_redirect', {
+            //             event_category: 'Universal Link',
+            //             event_label: platform,
+            //             value: 1
+            //         });
+            //     }
 
-                // Facebook Pixel (if available)
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'ViewContent', {
-                        content_name: 'Store Redirect',
-                        content_category: platform
-                    });
-                }
+            //     // Facebook Pixel (if available)
+            //     if (typeof fbq !== 'undefined') {
+            //         fbq('track', 'ViewContent', {
+            //             content_name: 'Store Redirect',
+            //             content_category: platform
+            //         });
+            //     }
 
-                // Store in localStorage for tracking
-                try {
-                    const redirects = JSON.parse(localStorage.getItem('glowmeup_redirects') || '[]');
-                    redirects.push({
-                        timestamp: logData.timestamp,
-                        platform: platform
-                    });
-                    // Keep only last 100 redirects
-                    if (redirects.length > 100) redirects.shift();
-                    localStorage.setItem('glowmeup_redirects', JSON.stringify(redirects));
-                } catch (e) {
-                    console.log('localStorage not available');
-                }
-            };
+            //     // Store in localStorage for tracking
+            //     try {
+            //         const redirects = JSON.parse(localStorage.getItem('glowmeup_redirects') || '[]');
+            //         redirects.push({
+            //             timestamp: logData.timestamp,
+            //             platform: platform
+            //         });
+            //         // Keep only last 100 redirects
+            //         if (redirects.length > 100) redirects.shift();
+            //         localStorage.setItem('glowmeup_redirects', JSON.stringify(redirects));
+            //     } catch (e) {
+            //         console.log('localStorage not available');
+            //     }
+            // };
 
             // Get path and query params
             const params = new URLSearchParams(window.location.search);
@@ -244,25 +244,25 @@
                     document.body.appendChild(iframe);
 
                     // Fallback after delay
-                    // setTimeout(() => {
-                    cleanup();
-                    if (!didHide) {
-                        // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
-                        window.location.href = fallbackUrl;
-                    }
-                    // }, 2500);
+                    setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
+                            window.location.href = fallbackUrl;
+                        }
+                    }, 2500);
                 }
                 // iOS other browsers
                 else if (isIOS) {
                     window.location.href = deepLink;
 
-                    // setTimeout(() => {
-                    cleanup();
-                    if (!didHide) {
-                        // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
-                        window.location.href = fallbackUrl;
-                    }
-                    // }, 2000);
+                    setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
+                            window.location.href = fallbackUrl;
+                        }
+                    }, 2000);
                 }
                 // Android
                 else if (isAndroid) {
@@ -270,13 +270,13 @@
                     const intent = 'intent://app' + fullPath + '#Intent;scheme=glowmeup;package=com.myspa.glowmeup;end';
                     window.location.href = intent;
 
-                    // setTimeout(() => {
-                    cleanup();
-                    if (!didHide) {
-                        // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
-                        window.location.href = fallbackUrl;
-                    }
-                    // }, 2000);
+                    setTimeout(() => {
+                        cleanup();
+                        if (!didHide) {
+                            // logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
+                            window.location.href = fallbackUrl;
+                        }
+                    }, 2000);
                 }
                 // Desktop or other
                 else {
@@ -284,11 +284,11 @@
                 }
 
                 // Show fallback UI after timeout
-                // setTimeout(() => {
-                if (!didHide) {
-                    showFallback();
-                }
-                // }, 3000);
+                setTimeout(() => {
+                    if (!didHide) {
+                        showFallback();
+                    }
+                }, 3000);
             };
 
             // Auto-open on page load

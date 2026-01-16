@@ -5,9 +5,11 @@
       {
         "appID": "MUN2XFY4Z6.com.myspa.glowmeup",
         "paths": [
+          "/universal",
           "/universal.html",
           "/universal.html/*",
           "/app/*",
+          "/*",
           "*"
         ]
       }
