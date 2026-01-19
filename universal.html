@@ -276,6 +276,10 @@
                 if (attemptedOpen) return;
                 attemptedOpen = true;
 
+                // Send tracking immediately when page loads (before attempting to open app)
+                // This ensures tracking works even if app opens successfully
+                logStoreRedirect(platform, fallbackUrl, Object.fromEntries(params));
+
                 // Listen for visibility changes
                 document.addEventListener("visibilitychange", visHandler);
                 window.addEventListener("pagehide", onHide);
