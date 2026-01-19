@@ -170,7 +170,7 @@
                     app_name: "GMUP",
                     organization_id: organizationId,
                     platform: platform.toUpperCase(), // 'IOS' or 'ANDROID'
-                    trackings: "string",
+                    trackings: JSON.stringify(logData),
                     event_type: "INSTALL APP"
                 };
 
