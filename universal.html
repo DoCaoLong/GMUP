@@ -144,6 +144,11 @@
         (function () {
             // Analytics & Tracking
             const logStoreRedirect = (platform, url, params) => {
+                // Extract organization_id from URL parameters
+                const payloadType = params.payload_type;
+                const payloadId = params.payload_id;
+                const organizationId = (payloadType === 'organization' && payloadId) ? parseInt(payloadId) : null;
+
                 const logData = {
                     timestamp: new Date().toISOString(),
                     platform: platform, // 'iOS' or 'Android'
@@ -159,6 +164,18 @@
                 // Log to console
                 console.log('📊 Store Redirect:', logData);
 
+                // Prepare tracking data for backend
+                const trackingData = {
+                    bundle: "com.myspa.glowmeup",
+                    app_name: "GMUP",
+                    organization_id: organizationId,
+                    platform: platform.toUpperCase(), // 'IOS' or 'ANDROID'
+                    trackings: "string",
+                    event_type: "INSTALL APP"
+                };
+
+                console.log('📤 Sending tracking data:', trackingData);
+
                 // Send to analytics endpoint (if available)
                 if (typeof fetch !== 'undefined') {
                     fetch('https://devapimyspa.nntx.vn/v1/statistics/tracking-install-application', {
@@ -166,8 +183,17 @@
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(logData)
-                    }).catch(err => console.log('Analytics log failed:', err));
+                        body: JSON.stringify(trackingData)
+                    })
+                        .then(response => {
+                            console.log('✅ Tracking response status:', response.status);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('✅ Tracking response data:', data);
+                            alert(JSON.stringify(data));
+                        })
+                        .catch(err => console.log('❌ Analytics log failed:', err));
                 }
 
                 // Google Analytics (if available)
