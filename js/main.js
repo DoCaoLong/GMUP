@@ -105,9 +105,9 @@ if (!toggleButton || !navMenu || !closeButton) {
 // ).matches;
 
 function createIntroTimeline() {
-    // Lighter initial state - don't hide completely
+    // Lighter initial state for instant visibility
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
-        opacity: 0.3, // Start slightly visible
+        opacity: 0.3,
     });
     gsap.set(
         [
@@ -121,38 +121,38 @@ function createIntroTimeline() {
             ".dowload_app",
         ],
         {
-            opacity: 0.3, // Start slightly visible
-            y: 15, // Smaller movement
+            opacity: 0.3,
+            y: 30,
         }
     );
-    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0.3, y: 10 });
+    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0.3, y: 20 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-    // Faster, smoother animations
+    // Original smooth animation speeds
     tl.to(".header_logo, .header_nav ul li, .menu_toggle", {
         opacity: 1,
-        duration: 0.2, // Faster
-        stagger: 0.05,
+        duration: 0.3,
+        stagger: 0.1,
     })
-        .to(".hero_text", { opacity: 1, y: 0, duration: 0.25 }, "-=0.1")
-        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
-        .to(".hero_title", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
-        .to(".hero_location", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
-        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
-        .to(".hero_time", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
-        .to(".dowload_app", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".hero_text", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_title", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_location", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_time", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".dowload_app", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
 
         .to(
             ".hero_buttons div",
-            { opacity: 1, y: 0, duration: 0.15, stagger: 0.05 },
+            { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
         )
-        .to(".openModalBtn", { opacity: 1, y: 0, duration: 0.05 }, "-=0.05")
+        .to(".openModalBtn", { opacity: 1, y: 0, duration: 0.08 }, "-=0.1")
 
         .to(
             ".hero_buttons a",
-            { opacity: 1, y: 0, duration: 0.15, stagger: 0.05 },
+            { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
             "-=0.1"
         );
     return tl;
