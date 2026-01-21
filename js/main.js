@@ -105,9 +105,9 @@ if (!toggleButton || !navMenu || !closeButton) {
 // ).matches;
 
 function createIntroTimeline() {
-    // Reset trạng thái mỗi lần gọi
+    // Lighter initial state - don't hide completely
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
-        opacity: 0,
+        opacity: 0.3, // Start slightly visible
     });
     gsap.set(
         [
@@ -121,46 +121,48 @@ function createIntroTimeline() {
             ".dowload_app",
         ],
         {
-            opacity: 0,
-            y: 30,
+            opacity: 0.3, // Start slightly visible
+            y: 15, // Smaller movement
         }
     );
-    // Countdown animations removed
-    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0, y: 20 });
+    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0.3, y: 10 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
+    // Faster, smoother animations
     tl.to(".header_logo, .header_nav ul li, .menu_toggle", {
         opacity: 1,
-        duration: 0.3,
-        stagger: 0.1,
+        duration: 0.2, // Faster
+        stagger: 0.05,
     })
-        .to(".hero_text", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_title", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_location", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".hero_time", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(".dowload_app", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+        .to(".hero_text", { opacity: 1, y: 0, duration: 0.25 }, "-=0.1")
+        .to(".hero_logo", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".hero_title", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".hero_location", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".hero_desc", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".hero_time", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
+        .to(".dowload_app", { opacity: 1, y: 0, duration: 0.25 }, "-=0.15")
 
         .to(
             ".hero_buttons div",
-            { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
+            { opacity: 1, y: 0, duration: 0.15, stagger: 0.05 },
             "-=0.1"
         )
-        .to(".openModalBtn", { opacity: 1, y: 0, duration: 0.08 }, "-=0.1")
+        .to(".openModalBtn", { opacity: 1, y: 0, duration: 0.05 }, "-=0.05")
 
         .to(
             ".hero_buttons a",
-            { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
+            { opacity: 1, y: 0, duration: 0.15, stagger: 0.05 },
             "-=0.1"
         );
     return tl;
 }
 
-window.addEventListener("load", () => {
+// Fast preloader - show content immediately, don't wait for full load
+document.addEventListener("DOMContentLoaded", () => {
     const preloader = document.getElementById("preloader");
 
+    // Quick preloader animation (max 1 second)
     const master = gsap.timeline({
         defaults: { ease: "power2.inOut" },
         onComplete: () => {
@@ -168,30 +170,30 @@ window.addEventListener("load", () => {
         },
     });
 
-    // 1. Preloader
+    // Short preloader sequence
     master
         .to(".line-slice", {
             scaleX: 1,
-            duration: 0.6,
+            duration: 0.3,
         })
         .to(".line-slice", {
             opacity: 0,
-            duration: 0.2,
+            duration: 0.15,
         })
         .to(".preloader-overlay", {
             scaleY: 1,
-            duration: 0.5,
+            duration: 0.3,
         })
         .to(
             "#preloader",
             {
                 opacity: 0,
-                duration: 0.4,
+                duration: 0.25,
             },
-            "-=0.2" // fade preloader trong lúc overlay hoàn tất → đỡ gãy
+            "-=0.1"
         )
-        // 2. Thêm intro ngay sau preloader (hơi overlap cho mượt)
-        .add(createIntroTimeline(), "-=0.2");
+        // Show content immediately after preloader
+        .add(createIntroTimeline(), "-=0.1");
 });
 
 window.addEventListener("pageshow", (e) => {
