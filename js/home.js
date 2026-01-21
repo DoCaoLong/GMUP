@@ -485,18 +485,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
 
 
-    // Lazy load hero background
+    // Load hero background immediately for better LCP
     const hero = document.querySelector('.hero');
     if (hero) {
-        // Use requestIdleCallback for non-critical background loading
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => {
-                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowmeup.jpg")';
-            });
-        } else {
-            setTimeout(() => {
-                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowmeup.jpg")';
-            }, 100);
-        }
+        // Load immediately - this is critical for above-the-fold content
+        hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowmeup.jpg")';
     }
 });
