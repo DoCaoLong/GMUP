@@ -491,11 +491,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Use requestIdleCallback for non-critical background loading
         if ('requestIdleCallback' in window) {
             requestIdleCallback(() => {
-                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowme.jpg")';
+                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowmeup.jpg")';
             });
         } else {
             setTimeout(() => {
-                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowme.jpg")';
+                hero.style.backgroundImage = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./imgs/home/hero_glowmeup.jpg")';
             }, 100);
         }
     }
