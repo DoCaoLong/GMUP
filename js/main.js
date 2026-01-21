@@ -105,9 +105,9 @@ if (!toggleButton || !navMenu || !closeButton) {
 // ).matches;
 
 function createIntroTimeline() {
-    // Lighter initial state for instant visibility
+    // Reset to completely hidden for clean animation
     gsap.set(".header_logo, .header_nav ul li, .menu_toggle", {
-        opacity: 0.3,
+        opacity: 0,
     });
     gsap.set(
         [
@@ -121,11 +121,11 @@ function createIntroTimeline() {
             ".dowload_app",
         ],
         {
-            opacity: 0.3,
+            opacity: 0,
             y: 30,
         }
     );
-    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0.3, y: 20 });
+    gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
