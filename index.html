@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
     <title>GlowMeUp - Ứng Dụng Beauty Tech AI | Đặt Lịch Spa & Salon Thông Minh</title>
     <meta name="title" content="GlowMeUp - Ứng Dụng Beauty Tech AI | Đặt Lịch Spa & Salon Thông Minh" />
     <meta name="description"
-        content="GlowMeUp - Nền tảng Beauty Tech ứng dụng AI giúp đặt lịch spa, salon dễ dàng. Gợi ý dịch vụ làm đẹp theo mood, trải nghiệm cá nhân hóa." />
+        content="Đặt lịch spa, salon thông minh với GlowMeUp - Nền tảng Beauty Tech AI. Gợi ý dịch vụ làm đẹp theo mood, trải nghiệm cá nhân hóa. Tải app ngay!" />
     <meta name="keywords"
         content="GlowMeUp, beauty tech, AI làm đẹp, đặt lịch spa, salon booking, ứng dụng làm đẹp, spa TPHCM, beauty app Vietnam, AI beauty, skincare, makeup, wellness" />
     <meta name="author" content="GlowMeUp Team" />
@@ -40,12 +40,17 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://glowmeup.vn/" />
 
+    <!-- Alternate Language Tags -->
+    <link rel="alternate" hreflang="vi" href="https://glowmeup.vn/" />
+    <link rel="alternate" hreflang="x-default" href="https://glowmeup.vn/" />
+
     <!-- Geo Tags -->
     <meta name="geo.region" content="VN-SG" />
     <meta name="geo.placename" content="Ho Chi Minh City" />
     <meta name="geo.position" content="10.762622;106.660172" />
     <meta name="ICBM" content="10.762622, 106.660172" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/apple-touch-icon.png" />
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon_io/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./imgs/favicon_io/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="./imgs/favicon_io/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./imgs/favicon_io/favicon-16x16.png" />
     <link rel="manifest" href="./imgs/favicon_io/site.webmanifest" />
@@ -53,8 +58,13 @@
     <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://api.myspa.vn" crossorigin />
     <link rel="dns-prefetch" href="https://www.youtube.com" />
     <link rel="dns-prefetch" href="https://myspa.vn" />
+
+    <!-- Preload Critical Images -->
+    <link rel="preload" href="./imgs/glowme_logo.png" as="image" />
+    <link rel="preload" href="./imgs/home/logo.svg" as="image" />
 
     <!-- Preload Critical Fonts -->
     <link rel="preload" href="./fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -62,8 +72,8 @@
 
     <!-- Critical CSS -->
     <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/main.css?v=1.8" />
-    <link rel="stylesheet" href="./css/home.css?v=2.1" />
+    <link rel="stylesheet" href="./css/main.css?v=1.9" />
+    <link rel="stylesheet" href="./css/home.css?v=2.2" />
     <link rel="stylesheet" href="./css/video-slider.css" />
 
     <!-- Google Tag Manager -->
@@ -90,15 +100,27 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "GlowMeUp",
+      "alternateName": "Glow Me Up",
       "url": "https://glowmeup.vn",
-      "logo": "https://glowmeup.vn/imgs/glowme_logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://glowmeup.vn/imgs/glowme_logo.png",
+        "width": 512,
+        "height": 512
+      },
       "description": "Nền tảng Beauty Tech ứng dụng AI giúp đặt lịch spa, salon thông minh tại Việt Nam",
       "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Lầu 9, Toà Nhà VNO, 129 Điện Biên Phủ, Phường Gia Định, TP Hồ Chí Minh",
+        "streetAddress": "Lầu 9, Toà Nhà VNO, 129 Điện Biên Phủ, Phường Gia Định",
         "addressLocality": "Hồ Chí Minh",
+        "addressRegion": "TP.HCM",
         "addressCountry": "VN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "availableLanguage": ["Vietnamese"]
       },
       "sameAs": [
         "https://www.facebook.com/glowmeup25"
@@ -139,12 +161,32 @@
       "@context": "https://schema.org",
       "@type": "MobileApplication",
       "name": "GlowMeUp",
+      "description": "Ứng dụng đặt lịch spa, salon thông minh với AI",
       "operatingSystem": "iOS, Android",
       "applicationCategory": "LifestyleApplication",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "VND"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1000"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GlowMeUp",
+      "url": "https://glowmeup.vn",
+      "description": "Nền tảng Beauty Tech ứng dụng AI giúp đặt lịch spa, salon thông minh",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GlowMeUp"
       }
     }
     </script>
@@ -172,7 +214,6 @@
                 <ul>
                     <li><a href="#event">Sự kiện</a></li>
                     <li><a href="#update">Cập nhật</a></li>
-                    <li><a href="#register">Nhận thông báo</a></li>
                 </ul>
                 <button class="close_menu" id="close_menu">
                     <img src="./imgs/cancel.png" alt="" />
@@ -206,61 +247,16 @@
                         <img src="./imgs/qr.png" alt="QR Code" width="150" height="150" loading="lazy" />
                     </div>
                 </div>
-                <div class="hero_countdowns">
-                    <div class="countdown_item" data-bg="./imgs/home/heroo1.png">
-                        <span class="countdown_number" id="days">00</span>
-                        <span class="countdown_label">Ngày</span>
-                    </div>
-                    <div class="countdown_item" data-bg="./imgs/home/heroo2.png">
-                        <span class="countdown_number" id="hours">00</span>
-                        <span class="countdown_label">Giờ</span>
-                    </div>
-                    <div class="countdown_item" data-bg="./imgs/home/heroo3.png">
-                        <span class="countdown_number" id="minutes">00</span>
-                        <span class="countdown_label">Phút</span>
-                    </div>
-                    <div class="countdown_item" data-bg="./imgs/home/heroo4.png">
-                        <span class="countdown_number" id="seconds">00</span>
-                        <span class="countdown_label">Giây</span>
-                    </div>
-                </div>
                 <div class="hero_buttons">
                     <div id="openVideoBtn" class="button hero_button mouse_hover">
                         Xem cập nhật
                     </div>
-                    <a id="register_event" href="#register" class="button hero_button">Đăng kí tham gia</a>
                     <div id="openModalBtn" target="_blank" class="button hero_button dowload_app_mb mouse_hover">
                         <p>
-                            <!-- <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    aria-hidden="true"
-                                >
-                                    <path
-                                        d="M12 3v10m0 0l-4-4m4 4l4-4"
-                                        stroke="#000"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M4 17v3h16v-3"
-                                        stroke="#000"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg> -->
                             <span>Đăng ký đối tác</span>
                         </p>
                     </div>
                 </div>
-                <!-- <div class="hero_mouse">
-                        <img src="./imgs/mouse.svg" alt="" />
-                    </div> -->
             </div>
         </section>
 
@@ -525,33 +521,7 @@
             </div>
         </section>
 
-        <!-- <section id="register" class="register section">
-                <div class="container">
-                    <div class="title_master">
-                        <div class="title_img">
-                            <img src="./imgs/home/mail-yellow1.svg" alt="" />
-                        </div>
-                        <div class="title_content">
-                            <h2>Đăng ký tham gia sự kiện</h2>
-                            <p>
-                                Đăng ký tham gia sự kiện. Chỉ dành cho chủ doanh
-                                nghiệp làm đẹp đăng ký sớm nhất!
-                            </p>
-                        </div>
-                        <div class="title_arr">
-                            <img src="./imgs/home/arrow_black.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="register_input">
-                        <button
-                            class="openModalBtn home_regis"
-                            id="openModalBtn"
-                        >
-                            Đăng ký
-                        </button>
-                    </div>
-                </div>
-            </section> -->
+
 
         <footer class="footer">
             <div class="container">
@@ -635,10 +605,10 @@
     <script src="./lib/ScrollToPlugin.min.js" defer></script>
     <script src="./lib/ScrollTrigger.min.js" defer></script>
     <script src="./lib/swiper-bundle.min.js" defer></script>
-    <script src="./js/main.js?v=1.9" defer></script>
+    <script src="./js/main.js?v=2.0" defer></script>
     <!-- Load these after libraries are deferred but execute immediately when available -->
     <script src="./js/lazy-load.js?v=1.2"></script>
-    <script src="./js/home.js?v=2.3"></script>
+    <script src="./js/home.js?v=2.4"></script>
 </body>
 
 </html>

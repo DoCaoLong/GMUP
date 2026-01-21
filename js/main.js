@@ -125,7 +125,7 @@ function createIntroTimeline() {
             y: 30,
         }
     );
-    gsap.set(".hero_countdowns .countdown_item", { opacity: 0, y: 20 });
+    // Countdown animations removed
     gsap.set([".hero_buttons div", ".hero_buttons a"], { opacity: 0, y: 20 });
 
     const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
@@ -142,27 +142,7 @@ function createIntroTimeline() {
         .to(".hero_desc", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(".hero_time", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
         .to(".dowload_app", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
-        .to(
-            ".hero_countdowns .countdown_item",
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                stagger: 0.08,
-            },
-            "-=0.2"
-        )
-        .fromTo(
-            ".hero_countdowns .countdown_number",
-            { scale: 0.9 },
-            {
-                scale: 1,
-                duration: 0.35,
-                stagger: 0.06,
-                ease: "back.out(2)",
-            },
-            "<"
-        )
+
         .to(
             ".hero_buttons div",
             { opacity: 1, y: 0, duration: 0.2, stagger: 0.08 },
@@ -221,16 +201,7 @@ window.addEventListener("pageshow", (e) => {
     }
 });
 
-function popOnce(el) {
-    // if (reduceMotion) return;
-    gsap.fromTo(
-        el,
-        { scale: 0.95 },
-        { scale: 1, duration: 0.2, ease: "power1.out" }
-    );
-}
-
-popOnce(document.getElementById("seconds"));
+// popOnce function removed - countdown ended
 
 // Animate các section khi scroll vào view
 let sections = document.querySelectorAll(".section");
