@@ -158,11 +158,11 @@ function createIntroTimeline() {
     return tl;
 }
 
-// Fast preloader - show content immediately, don't wait for full load
+// Smooth preloader - premium loading experience
 document.addEventListener("DOMContentLoaded", () => {
     const preloader = document.getElementById("preloader");
 
-    // Quick preloader animation (max 1 second)
+    // Slower, more premium preloader animation
     const master = gsap.timeline({
         defaults: { ease: "power2.inOut" },
         onComplete: () => {
@@ -170,30 +170,30 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
-    // Short preloader sequence
+    // Smooth preloader sequence
     master
         .to(".line-slice", {
             scaleX: 1,
-            duration: 0.3,
+            duration: 0.8, // Slower for premium feel
         })
         .to(".line-slice", {
             opacity: 0,
-            duration: 0.15,
+            duration: 0.3,
         })
         .to(".preloader-overlay", {
             scaleY: 1,
-            duration: 0.3,
+            duration: 0.6, // Smooth transition
         })
         .to(
             "#preloader",
             {
                 opacity: 0,
-                duration: 0.25,
+                duration: 0.5,
             },
-            "-=0.1"
+            "-=0.2"
         )
-        // Show content immediately after preloader
-        .add(createIntroTimeline(), "-=0.1");
+        // Show content with smooth overlap
+        .add(createIntroTimeline(), "-=0.3");
 });
 
 window.addEventListener("pageshow", (e) => {
