@@ -71,10 +71,17 @@
     <link rel="preload" href="./fonts/Poppins-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Critical CSS -->
-    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+    <!-- Critical CSS - Load immediately -->
     <link rel="stylesheet" href="./css/main.css?v=1.9" />
     <link rel="stylesheet" href="./css/home.css?v=2.2" />
-    <link rel="stylesheet" href="./css/video-slider.css" />
+
+    <!-- Non-critical CSS - Defer loading -->
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./css/video-slider.css" media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="./css/video-slider.css" />
+    </noscript>
 
     <!-- Google Tag Manager -->
     <script>
@@ -208,7 +215,7 @@
     <div id="glowmePage" class="glowmePage">
         <header class="header">
             <a href="#hero" class="header_logo">
-                <img src="./imgs/home/logo.svg" alt="Glow Me Up" width="150" height="50" />
+                <img src="./imgs/home/logo.svg" alt="Glow Me Up" width="150" height="50" fetchpriority="high" />
             </a>
             <nav class="header_nav" id="mobileMenu">
                 <ul>
@@ -233,7 +240,8 @@
                     <p>GlowMeUp = Beauty × Technology × AI</p>
                 </div>
                 <div class="hero_logo">
-                    <img src="./imgs/glowme_logo.png" alt="GlowMeUp Logo" width="223" height="223" />
+                    <img src="./imgs/glowme_logo.png" alt="GlowMeUp Logo" width="223" height="223"
+                        fetchpriority="high" />
                 </div>
                 <h1 class="hero_title">TÁI ĐỊNH NGHĨA KỶ NGUYÊN NGÀNH LÀM ĐẸP</h1>
                 <p class="hero_desc">
